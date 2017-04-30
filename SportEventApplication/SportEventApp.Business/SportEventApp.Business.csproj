@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E4723C38-DE73-432E-8EF3-49F85CD75A02}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SportEventApp.Business</RootNamespace>
+    <AssemblyName>SportEventApp.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DTOModels\AccountSimpleDTO.cs" />
+    <Compile Include="DTOModels\AccountDTO.cs" />
+    <Compile Include="DTOModels\AdressDTO.cs" />
+    <Compile Include="DTOModels\ConversationDTO.cs" />
+    <Compile Include="DTOModels\MessageDTO.cs" />
+    <Compile Include="DTOModels\SignUpAccountDTO.cs" />
+    <Compile Include="DTOModels\SportEventDetailDTO.cs" />
+    <Compile Include="DTOModels\SportEventDTO.cs" />
+    <Compile Include="DTOModels\SportInterestDTO.cs" />
+    <Compile Include="DTOModels\SportDTO.cs" />
+    <Compile Include="Mapping\AccountMapper.cs" />
+    <Compile Include="Mapping\AccountSimpleMapper.cs" />
+    <Compile Include="Mapping\AdressMapper.cs" />
+    <Compile Include="Mapping\SignUpAccountMapper.cs" />
+    <Compile Include="Mapping\SportEventDetailMapper.cs" />
+    <Compile Include="Mapping\SportEventMapper.cs" />
+    <Compile Include="Mapping\SportMapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\AdressService.cs" />
+    <Compile Include="Services\MessengerService.cs" />
+    <Compile Include="Services\SignUpAccountService.cs" />
+    <Compile Include="Services\SportEventDetailService.cs" />
+    <Compile Include="Services\SportEventService.cs" />
+    <Compile Include="Services\SportService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SportEventApp.Data\SportEventApp.Data.csproj">
+      <Project>{2814ca22-2922-4a00-8311-5bd983f69c67}</Project>
+      <Name>SportEventApp.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
