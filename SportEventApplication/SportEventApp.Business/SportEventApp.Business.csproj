@@ -53,6 +53,8 @@
     <Compile Include="Mapping\AccountMapper.cs" />
     <Compile Include="Mapping\AccountSimpleMapper.cs" />
     <Compile Include="Mapping\AdressMapper.cs" />
+    <Compile Include="Mapping\ConversationMapper.cs" />
+    <Compile Include="Mapping\MessageMapper.cs" />
     <Compile Include="Mapping\SignUpAccountMapper.cs" />
     <Compile Include="Mapping\SportEventDetailMapper.cs" />
     <Compile Include="Mapping\SportEventMapper.cs" />
