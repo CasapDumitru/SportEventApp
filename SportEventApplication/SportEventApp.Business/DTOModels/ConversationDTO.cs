@@ -9,8 +9,8 @@ namespace SportEventApp.Business.DTOModels
     public class ConversationDTO
     {
         public int Id { get; set; }
-        public AccountDTO UserOne { get; set; }
-        public AccountDTO UserTwo { get; set; }
-        public virtual ICollection<MessageDTO> Messages { get; set; }
+        public AccountSimpleDTO UserOne { get; set; }
+        public AccountSimpleDTO UserTwo { get; set; }
+        public  ICollection<MessageDTO> Messages { get; set; }
     }
 }

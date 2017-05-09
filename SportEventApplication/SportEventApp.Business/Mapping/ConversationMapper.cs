@@ -16,17 +16,21 @@ namespace SportEventApp.Business.Mapping
 
             target.Id = source.Id;
 
-            AccountMapper accountMapper = new AccountMapper();
+            AccountSimpleMapper accountMapper = new AccountSimpleMapper();
             target.UserOne = accountMapper.MapToDTO(source.UserOne);
             target.UserTwo = accountMapper.MapToDTO(source.UserTwo);
 
             MessageMapper messageMapper = new MessageMapper();
             target.Messages = new HashSet<MessageDTO>();
 
-            foreach (var mes in source.Messages)
+            if(source.Messages != null)
             {
-                target.Messages.Add(messageMapper.MapToDTO(mes));
+                foreach (var mes in source.Messages)
+                {
+                    target.Messages.Add(messageMapper.MapToDTO(mes));
+                }
             }
+            
             return target;
 
         }
@@ -37,16 +41,19 @@ namespace SportEventApp.Business.Mapping
 
             target.Id = source.Id;
 
-            AccountMapper accountMapper = new AccountMapper();
+            AccountSimpleMapper accountMapper = new AccountSimpleMapper();
             target.UserOne = accountMapper.MapFromDTO(source.UserOne);
             target.UserTwo = accountMapper.MapFromDTO(source.UserTwo);
 
             MessageMapper messageMapper = new MessageMapper();
             target.Messages = new HashSet<Message>();
 
-            foreach (var mes in source.Messages)
+            if(source.Messages != null)
             {
-                target.Messages.Add(messageMapper.MapFromDTO(mes));
+                foreach (var mes in source.Messages)
+                {
+                    target.Messages.Add(messageMapper.MapFromDTO(mes));
+                }              
             }
             return target;
 

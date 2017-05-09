@@ -14,7 +14,7 @@ namespace SportEventApp.Data
         public DbSet<Conversation> Conversations { get; set; }
         public DbSet<Adress> Adress { get; set; }
         public DbSet<Friendship> Friendships { get; set; }
-        public DatabaseContext() : base("DatabaseContext")
+        public DatabaseContext() : base("SportEventApp.DatabaseContext")
         {
         }
 

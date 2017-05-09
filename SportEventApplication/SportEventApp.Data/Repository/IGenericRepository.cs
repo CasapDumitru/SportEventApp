@@ -11,7 +11,7 @@ namespace SportEventApp.Data.Repository
         {
             IQueryable<T> GetAll();
             IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
-            void Add(T entity);
+            T Add(T entity);
             void Delete(int id);
             void Edit(T entity);
             void Save();

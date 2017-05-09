@@ -10,9 +10,9 @@ namespace SportEventApp.Business.DTOModels
     {
         public int Id { get; set; }
         [Required]
-        public virtual string Text { get; set; }
-        public virtual AccountDTO User { get; set; }
+        public string Text { get; set; }
+        public AccountSimpleDTO User { get; set; }
         public DateTime Date { get; set; }
-        public virtual ConversationDTO Conversation { get; set; }
+        public ConversationDTO Conversation { get; set; }
     }
 }

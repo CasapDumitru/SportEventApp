@@ -66,6 +66,14 @@
     <Compile Include="Migrations\201704300915243_DataModel.Designer.cs">
       <DependentUpon>201704300915243_DataModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705091538265_DropUserRoleColumn.cs" />
+    <Compile Include="Migrations\201705091538265_DropUserRoleColumn.Designer.cs">
+      <DependentUpon>201705091538265_DropUserRoleColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705091800319_Migrat1.cs" />
+    <Compile Include="Migrations\201705091800319_Migrat1.Designer.cs">
+      <DependentUpon>201705091800319_Migrat1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Adress.cs" />
@@ -87,6 +95,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201704300915243_DataModel.resx">
       <DependentUpon>201704300915243_DataModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705091538265_DropUserRoleColumn.resx">
+      <DependentUpon>201705091538265_DropUserRoleColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705091800319_Migrat1.resx">
+      <DependentUpon>201705091800319_Migrat1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

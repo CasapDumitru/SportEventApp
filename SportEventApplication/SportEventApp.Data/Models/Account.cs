@@ -13,7 +13,6 @@ namespace SportEventApp.Data.Models
         public string UserPassword { get; set; }
         public int AdressId { get; set; }
         public virtual Adress Adress { get; set; }
-        public int UserRole { get; set; }
         public virtual ICollection<Sport> Interests { get; set; }
         public virtual ICollection <SportEvent> ParticipatedSportEvents { get; set; }
         public virtual ICollection<SportEvent> OrganizedSportEvents { get; set; }

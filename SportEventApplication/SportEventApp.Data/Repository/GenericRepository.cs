@@ -35,9 +35,15 @@ namespace SportEventApp.Data.Repository
             return query;
         }
 
-        public virtual void Add(T entity)
+        /*public virtual void Add(T entity)
         {
             context.Set<T>().Add(entity);
+        }*/
+        public T Add(T entity)
+        {
+            context.Set<T>().Add(entity);
+            this.context.SaveChanges();
+            return entity;
         }
 
         public virtual void Delete(int id)

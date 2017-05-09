@@ -15,7 +15,6 @@ namespace SportEventApp.Data.Mappings
             Property(m => m.Email);
             Property(m => m.UserName);
             Property(m => m.UserPassword);
-            Property(m => m.UserRole);
             Property(m => m.AdressId);
             HasRequired(m => m.Adress).WithMany().HasForeignKey(m => m.AdressId);
             HasMany(m => m.Interests).WithMany().Map(m => m.MapLeftKey("AccountId").MapRightKey("SportId").ToTable("Accounts_Sports"));
