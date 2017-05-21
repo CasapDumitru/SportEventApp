@@ -1,0 +1,18 @@
+<h2> Admin Sport Events </h2>
+
+<div *ngIf = "ready">
+    <div  *ngFor="let sportEvent of sportEvents;let i = index">
+   <label>
+    Title : {{sportEvent.Title }} <br>
+    Date: {{sportEvent.Date.split('T')[0]}} <br>
+    Time: {{sportEvent.Date.split('T')[1]}} <br>
+    Description: {{sportEvent.Description}} <br>
+    Sport Type : {{sportEvent.Category.Name}} <br>
+    Address : {{sportEvent.Adress.address}} <br>
+    Owner : {{sportEvent.Owner.FullName}} <br>
+    <button (click)="DeleteSportEvent(sportEvent.Id,i)" > Delete</button>
+   </label>
+    <br>
+    <br>       
+    </div>
+</div>      

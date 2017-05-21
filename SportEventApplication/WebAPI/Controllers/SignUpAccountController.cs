@@ -18,7 +18,8 @@ namespace WebAPI.Controllers
         // POST api/<controller>
         public IHttpActionResult Post(SignUpAccountDTO account)
         {
-           
+            if(ModelState.IsValid)
+            {
                 var accountService = new SignUpAccountService();
                 AccountSimpleDTO accountVM = accountService.addAccount(account);
 
@@ -26,6 +27,11 @@ namespace WebAPI.Controllers
                     return NotFound();
 
                 return Ok(accountVM);
+            } else
+            {
+                return BadRequest("The model is not valid");
+            }
+                
       
         }
 
@@ -46,14 +52,21 @@ namespace WebAPI.Controllers
   
         public IHttpActionResult Put(SignUpAccountDTO suaccountVM)
         {
-            var accountSignUpService = new SignUpAccountService();
+            if (ModelState.IsValid)
+            {
+                var accountSignUpService = new SignUpAccountService();
 
-            SignUpAccountDTO accountVM = accountSignUpService.editAccount(suaccountVM);
+                SignUpAccountDTO accountVM = accountSignUpService.editAccount(suaccountVM);
 
-            if (accountVM == null)
-                return NotFound();
+                if (accountVM == null)
+                    return NotFound();
 
-            return Ok(accountVM);
+                return Ok(accountVM);
+            }
+            else
+            {
+                return BadRequest("The model is not valid");
+            }
         }
 
     }

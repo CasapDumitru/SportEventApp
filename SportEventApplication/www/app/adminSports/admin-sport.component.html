@@ -1,0 +1,26 @@
+<h2> Admin Sports </h2>
+
+<div class="col-xs-12">
+    <div class="col-xs-4 col-xs-offset-2">
+        <h2> Sports</h2> 
+            
+     <div *ngFor="let sport of sports;let i = index">
+            <div class="checkbox">
+                  <label>
+                     {{sport.Name}}
+                     <button (click)="DeleteSport(sport.Id,i)" > Delete</button>
+                 </label>                                  
+             </div>
+    </div>
+    </div>
+    <div class="col-xs-6">
+        <h2> Add new sport </h2>
+        <form #f="ngForm" (ngSubmit)="AddSport()" class="form-inline">
+                    <div class="form-group">
+                    <label for="sportName">Sport Name:</label>
+                    <input [(ngModel)]="newSport.name" name="sportName"  required   type="text" class="form-control" id="username" placeholder="Enter a sport">
+                    </div>
+                    <button  type="submit" class="btn btn-default">Add</button>
+        </form>
+    </div>
+</div>

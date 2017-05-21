@@ -10,7 +10,6 @@ namespace SportEventApp.Business.DTOModels
     {
         public int Id { get; set; }
         [Required]
-        [RegularExpression(@"^[a-zA-Z0-9.,-_]{5,50}$")]
         public string address { get; set; }
         [Required]
         public double latitude { get; set; }

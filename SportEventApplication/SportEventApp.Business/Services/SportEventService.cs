@@ -114,7 +114,7 @@ namespace SportEventApp.Busines.Services
                 if (existOwner != null)
                     sportEvent.Owner = existOwner;
 
-                sportEventRepository.Add(sportEvent);
+                sportEvent = sportEventRepository.Add(sportEvent);
                 uow.SaveChanges();
                 return sportEventMapper.MapToDTO(sportEvent);
 
@@ -288,6 +288,40 @@ namespace SportEventApp.Busines.Services
                 }
                 return list;
 
+            }
+
+        }
+
+        public bool deleteSportEvent(int id)
+        {
+            using (var uow = new UnitOfWork())
+            {
+                var sportEventRepo = uow.GetRepository<SportEvent>();
+
+                var sportEventSerivce = new SportEventService();
+
+                var sportEvent = sportEventRepo.GetById(id);
+
+                if (sportEvent == null)
+                    return false;
+                else
+                {   
+                    if(sportEvent.Attendees != null)
+                    {
+                        foreach (var aten in sportEvent.Attendees)
+                        {
+                            aten.ParticipatedSportEvents.Remove(sportEvent);
+                           // sportEventSerivce.NotGoingSportEvent(sportEvent.Id, aten.Id);
+                        }
+                        sportEvent.Attendees = null;
+                    }
+
+                    uow.SaveChanges();
+                    sportEventRepo.Delete(id);
+                    uow.SaveChanges();
+
+                    return true;
+                }
             }
 
         }

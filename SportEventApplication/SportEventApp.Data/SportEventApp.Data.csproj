@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseContext.cs" />
+    <Compile Include="Mappings\AdminMap.cs" />
     <Compile Include="Mappings\AdressMap.cs" />
     <Compile Include="Mappings\ConversationMap.cs" />
     <Compile Include="Mappings\FriendshipMap.cs" />
@@ -74,8 +75,13 @@
     <Compile Include="Migrations\201705091800319_Migrat1.Designer.cs">
       <DependentUpon>201705091800319_Migrat1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705131056112_AdminTable.cs" />
+    <Compile Include="Migrations\201705131056112_AdminTable.Designer.cs">
+      <DependentUpon>201705131056112_AdminTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Adress.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Conversation.cs" />
@@ -101,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705091800319_Migrat1.resx">
       <DependentUpon>201705091800319_Migrat1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705131056112_AdminTable.resx">
+      <DependentUpon>201705131056112_AdminTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

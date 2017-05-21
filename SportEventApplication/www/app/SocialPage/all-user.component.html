@@ -1,0 +1,12 @@
+<div *ngIf="ready">
+    <div *ngFor="let user of users">
+        <div *ngIf = "user.Id != userId">
+        <label>
+            {{user.FullName}}
+            {{user.Adress.address}}
+            {{user.Email}}
+        </label>
+        <div class="text-center" >  <button  (click) ="goToDetail(user.Id)"  style = "width:150px" class="btn btn-primary btn-success"> Details </button> </div>
+        </div>
+    </div>
+</div>

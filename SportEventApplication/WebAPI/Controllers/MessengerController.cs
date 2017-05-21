@@ -73,5 +73,23 @@ namespace WebAPI.Controllers
                 return BadRequest("This conversation does not exist in DB");
             return Ok(messDTO);
         }
+
+        [HttpGet]
+        [Route("GetMessages/{pageSize:int}/{pageNumber:int}/{userOneId}/{userSecondId}")]
+        public IHttpActionResult GetMessages(int pageSize,int pageNumber,int userOneId,int userSecondId)
+        {
+            var messengerService = new MessengerService();
+
+            return Ok(messengerService.GetMessages(pageSize,pageNumber,userOneId,userSecondId));
+        }
+
+        [HttpGet]
+        [Route("GetConversation/{userOneId}/{userSecondId}")]
+        public IHttpActionResult GetConversation(int userOneId, int userSecondId)
+        {
+            var messengerService = new MessengerService();
+
+            return Ok(messengerService.GetOrCreateConversation(userOneId, userSecondId));
+        }
     }
 }

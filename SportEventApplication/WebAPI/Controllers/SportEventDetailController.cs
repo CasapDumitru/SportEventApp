@@ -34,6 +34,7 @@ namespace WebAPI.Controllers
                 return NotFound();
 
             return Ok(sportEventVM);
+                    
         }
     }
 

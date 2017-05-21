@@ -20,8 +20,7 @@ namespace SportEventApp.Business.Mapping
             AccountSimpleMapper accountMapper = new AccountSimpleMapper();
             target.User = accountMapper.MapToDTO(source.User);
 
-            ConversationMapper conversationMapper = new ConversationMapper();
-            target.User = accountMapper.MapToDTO(source.User);
+            target.ConversationId = source.Conversation.Id;
 
             return target;
         }
@@ -33,12 +32,9 @@ namespace SportEventApp.Business.Mapping
             target.Text = source.Text;
             target.Date = source.Date;
             target.UserId = source.User.Id;
-            target.ConversationId = source.Conversation.Id;
+            target.ConversationId = source.ConversationId;
 
             AccountSimpleMapper accountMapper = new AccountSimpleMapper();
-            target.User = accountMapper.MapFromDTO(source.User);
-
-            ConversationMapper conversationMapper = new ConversationMapper();
             target.User = accountMapper.MapFromDTO(source.User);
 
             return target;

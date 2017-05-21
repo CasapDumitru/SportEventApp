@@ -1,0 +1,15 @@
+<h2> FRIENDS : </h2>
+<div *ngIf="ready">
+    <div *ngFor="let user of friends">
+        <label>
+            <div *ngIf = "user.UserOne.Id != userId">
+               Friend Name :  {{user.UserOne.FullName}}
+            </div>
+            <div *ngIf = "user.UserTwo.Id != userId">
+               Friend Name :  {{user.UserTwo.FullName}}
+            </div>
+            Since : {{user.Since}}
+            <div class="text-center" >  <button  (click) ="goToDetail(user)"  style = "width:150px" class="btn btn-primary btn-success"> Details </button> </div>
+        </label>      
+    </div>
+</div>

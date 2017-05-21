@@ -14,6 +14,7 @@ namespace SportEventApp.Data
         public DbSet<Conversation> Conversations { get; set; }
         public DbSet<Adress> Adress { get; set; }
         public DbSet<Friendship> Friendships { get; set; }
+        public DbSet<Admin> Admins { get; set; }
         public DatabaseContext() : base("SportEventApp.DatabaseContext")
         {
         }
@@ -30,6 +31,7 @@ namespace SportEventApp.Data
             modelBuilder.Configurations.Add(new MessageMap());
             modelBuilder.Configurations.Add(new ConversationMap());
             modelBuilder.Configurations.Add(new FriendshipMap());
+            modelBuilder.Configurations.Add(new AdminMap());
         }
     }
 }

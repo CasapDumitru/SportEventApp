@@ -70,12 +70,16 @@ namespace SportEventApp.Business.Services
                 var messageRepository = uow.GetRepository<Message>();
                 var acountRepository = uow.GetRepository<Account>();
                 var conversationRepository = uow.GetRepository<Conversation>();
+
+                Account ac  = acountRepository.GetById(messageDTO.User.Id); 
+
                 MessageMapper messageMapper = new MessageMapper();
+                messageDTO.User.FullName = ac.FirstName + " " + ac.LastName;
                 Message message = messageMapper.MapFromDTO(messageDTO);
-                message.User = acountRepository.GetById(messageDTO.User.Id);
-                message.Conversation = conversationRepository.GetById(messageDTO.Conversation.Id);
+                message.User = ac;
+                message.Conversation = conversationRepository.GetById(messageDTO.ConversationId);
                 message.Date = DateTime.Now;
-                messageRepository.Add(message);
+                message = messageRepository.Add(message);
                 uow.SaveChanges();
                 return messageMapper.MapToDTO(message);
             }
@@ -130,5 +134,74 @@ namespace SportEventApp.Business.Services
 
         }
 
+        public IEnumerable<MessageDTO> GetMessages(int pageSize,int pageNumber,int userOneId, int userSecondId)
+        {
+            using (var uow = new UnitOfWork())
+            {
+                var conversationRepository = uow.GetRepository<Conversation>();
+                var messagesRepository = uow.GetRepository<Message>();
+                var accountRepository = uow.GetRepository<Account>();
+
+                var conversation = conversationRepository.FindBy(conv => (
+                    (conv.UserOneId == userOneId & conv.UserTwoId == userSecondId) |
+                    (conv.UserOneId == userSecondId & conv.UserTwoId == userOneId))).FirstOrDefault();
+
+                if (conversation == null)
+                    return null;
+
+                var messages = messagesRepository.GetAll().Where(m => m.ConversationId == conversation.Id);
+
+                var totalCount = messages.Count();
+                var totalPages = Math.Ceiling((double)totalCount / pageSize);
+
+
+                messages = messages.OrderByDescending(s => s.Date);
+
+                var messagesPage =  messages.Skip((pageNumber - 1) * pageSize)
+                                        .Take(pageSize)
+                                        .ToList();
+
+                List<MessageDTO> messDTO = new List<MessageDTO>();
+
+                MessageMapper messageMapper = new MessageMapper();
+                foreach(Message m in messagesPage)
+                {
+                    m.User = accountRepository.GetById(m.UserId);
+                    m.Conversation = conversationRepository.GetById(m.ConversationId);
+                    messDTO.Add(messageMapper.MapToDTO(m));
+
+                }
+
+                return messDTO;
+            }
+        }
+
+        public int GetOrCreateConversation(int userOneId,int userTwoId)
+        {
+            using (var uow = new UnitOfWork())
+            {
+                var conversationRepository = uow.GetRepository<Conversation>();
+                var accountRepository = uow.GetRepository<Account>();
+
+                var conversation = conversationRepository.FindBy(conv => (
+                   (conv.UserOneId == userOneId & conv.UserTwoId == userTwoId) |
+                   (conv.UserOneId == userTwoId & conv.UserTwoId == userOneId))).FirstOrDefault();
+
+                if (conversation != null)
+                    return conversation.Id;
+
+                Conversation createConv = new Conversation();
+
+                createConv.UserOne = accountRepository.GetById(userOneId);
+                createConv.UserTwo = accountRepository.GetById(userTwoId);
+                createConv.UserOneId = userOneId;
+                createConv.UserTwoId = userOneId;
+
+                Conversation add = conversationRepository.Add(createConv);
+
+                return add.Id;
+
+            }
+        }
     }
 }

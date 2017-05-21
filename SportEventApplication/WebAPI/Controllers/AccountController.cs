@@ -3,6 +3,7 @@ using SportEventApp.Busines.Services;
 using SportEventApp.Business.DTOModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -158,8 +159,21 @@ namespace WebAPI.Controllers
 
             var accountService = new AccountService();
             var sportEvents = accountService.GetGoingSportEvents(pageSize, pageNumber, id);
+           
             if (sportEvents == null)
                 return NotFound();
+
+            var root = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
+
+            foreach (SportEventDTO spEv in sportEvents)
+            {
+                var path = Path.Combine(root, "Images/" + spEv.ImagePath);
+
+                var bytes = File.ReadAllBytes(path);
+
+                var base64 = Convert.ToBase64String(bytes);
+                spEv.ImageBase64 = "data:image/" + spEv.ImagePath.Split('.')[1] + ";base64," + base64;
+            }
 
             return Ok(sportEvents);
 

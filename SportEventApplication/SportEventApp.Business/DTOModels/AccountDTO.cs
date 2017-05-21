@@ -15,7 +15,6 @@ namespace SportEventApp.Business.DTOModels
         [EmailAddress]
         public string Email { get; set; }
         [Required]
-        [RegularExpression(@"^[a-zA-Z0-9-_.]{5,30}$")]
         public string UserName { get; set; }
         public AdressDTO Adress { get; set; }
 

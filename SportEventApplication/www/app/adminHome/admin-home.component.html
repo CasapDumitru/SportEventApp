@@ -1,0 +1,21 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+        </div>
+
+        <ul class="nav navbar-nav">
+            <li>
+                <a routerLink="./adminSport" routerLinkActive="active">Sports Management</a>
+            </li>
+            <li>
+                <a routerLink="./adminSportEvent" routerLinkActive="active">Sport Events Management </a>
+            </li>
+            <li>
+                <a routerLink="./../admin" routerLinkActive="active" (click) = "logout()">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<router-outlet></router-outlet>

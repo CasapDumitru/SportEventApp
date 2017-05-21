@@ -2,6 +2,7 @@
 using SportEventApp.Business.DTOModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -55,15 +56,26 @@ namespace WebAPI.Controllers
         // POST api/<controller>
         public IHttpActionResult Post(SportEventDTO sportevent)
         {
-      
-              var sportEventService = new SportEventService();
-              SportEventDTO sporteventVM = sportEventService.addSportEvent(sportevent);
+  
+            var sportEventService = new SportEventService();
+            SportEventDTO sporteventVM = sportEventService.addSportEvent(sportevent);
 
-              if (sportevent == null)
-                  return NotFound();
+            if (sportevent == null)
+                return NotFound();
 
-                return Ok(sportevent);
+            return Ok(sportevent);
+                    
 
+        }
+
+        // DELETE api/<controller>/5
+        public IHttpActionResult Delete(int id)
+        {
+            var sportEventService = new SportEventService();
+            bool svm = sportEventService.deleteSportEvent(id);
+            if (svm == null)
+                return BadRequest("This sportevent does not exist in DB");
+            return Ok(svm);
         }
 
 
@@ -94,8 +106,21 @@ namespace WebAPI.Controllers
 
             SportEventService sportEventService = new SportEventService();
 
+            var sportEvents = sportEventService.GetInterestedByPage(pageSize, pageNumber, userId);
 
-            return Ok(sportEventService.GetInterestedByPage(pageSize, pageNumber,userId));
+            var root = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
+
+            foreach(SportEventDTO spEv in sportEvents)
+            {
+                var path = Path.Combine(root, "Images/" + spEv.ImagePath);
+
+                var bytes = File.ReadAllBytes(path);
+               
+                var base64 = Convert.ToBase64String(bytes);
+                spEv.ImageBase64 = "data:image/" + spEv.ImagePath.Split('.')[1] + ";base64," + base64;
+            }         
+
+            return Ok(sportEvents);
         }
 
         [Route("GetCreatedByPage/{pageSize:int}/{pageNumber:int}/{userId:int}")]
@@ -105,7 +130,21 @@ namespace WebAPI.Controllers
             SportEventService sportEventService = new SportEventService();
 
 
-            return Ok(sportEventService.GetCreatedByPage(pageSize, pageNumber, userId));
+            var sportEvents = sportEventService.GetCreatedByPage(pageSize, pageNumber, userId);
+
+            var root = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
+
+            foreach (SportEventDTO spEv in sportEvents)
+            {
+                var path = Path.Combine(root, "Images/" + spEv.ImagePath);
+
+                var bytes = File.ReadAllBytes(path);
+
+                var base64 = Convert.ToBase64String(bytes);
+                spEv.ImageBase64 = "data:image/" + spEv.ImagePath.Split('.')[1] + ";base64," + base64;
+            }
+
+            return Ok(sportEvents);
         }
 
         [HttpGet]
@@ -136,7 +175,21 @@ namespace WebAPI.Controllers
 
             SportEventService sportEventService = new SportEventService();
 
-            return Ok(sportEventService.GetNearByPage(pageSize, pageNumber,lat,lng));
+            var sportEvents = sportEventService.GetNearByPage(pageSize, pageNumber, lat, lng);
+
+            var root = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
+
+            foreach (SportEventDTO spEv in sportEvents)
+            {
+                var path = Path.Combine(root, "Images/" + spEv.ImagePath);
+
+                var bytes = File.ReadAllBytes(path);
+
+                var base64 = Convert.ToBase64String(bytes);
+                spEv.ImageBase64 = "data:image/" + spEv.ImagePath.Split('.')[1] + ";base64," + base64;
+            }
+
+            return Ok(sportEvents);
         }
     }
 }

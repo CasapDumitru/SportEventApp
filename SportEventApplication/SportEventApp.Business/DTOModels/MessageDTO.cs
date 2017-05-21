@@ -13,6 +13,6 @@ namespace SportEventApp.Business.DTOModels
         public string Text { get; set; }
         public AccountSimpleDTO User { get; set; }
         public DateTime Date { get; set; }
-        public ConversationDTO Conversation { get; set; }
+        public int ConversationId { get; set; }
     }
 }

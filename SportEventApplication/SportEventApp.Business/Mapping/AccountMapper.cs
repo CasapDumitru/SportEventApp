@@ -13,8 +13,12 @@ namespace SportEventApp.Business.Mapping
             target.Email = source.Email;
             target.UserName = source.UserName;
 
-            AdressMapper adressMapper = new AdressMapper();
-            target.Adress = adressMapper.MapToDTO(source.Adress);
+            if(source.Adress != null)
+            {
+                AdressMapper adressMapper = new AdressMapper();
+                target.Adress = adressMapper.MapToDTO(source.Adress);
+            }
+           
 
             return target;
         }

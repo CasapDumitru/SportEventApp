@@ -57,12 +57,17 @@ namespace SportEventApp.Busines.Services
             using (var uow = new UnitOfWork())
             {
                 var sportRepository = uow.GetRepository<Sport>();
+                var sportEventRepo = uow.GetRepository<SportEvent>();
                 var sport = sportRepository.GetById(id);
 
                 if (sport == null)
                     return null;
                 else
                 {
+                    var existSporEvents = sportEventRepo.FindBy(sp => sp.CategoryId == id).FirstOrDefault();
+                    if (existSporEvents != null)
+                        return null;
+
                     sportRepository.Delete(id);
                     uow.SaveChanges();
                     

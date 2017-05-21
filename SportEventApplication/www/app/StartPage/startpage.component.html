@@ -1,0 +1,85 @@
+
+    <!--<div style = "height:100px"  class="row login">
+       <div class="col-md-6">
+                 <img style = "height:100px" src="./../../images/logo.png"  width="100%" alt="event image"/>     
+        </div> 
+        </div>-->
+        <br>
+        <div  class="col-md-12  vertical-center">
+                <form #f="ngForm" (ngSubmit)="SignIn()" class="form-inline">
+                    <div class="form-group">
+                    <label for="username">UserName:</label>
+                    <input [(ngModel)]="loginUserName" name="loginUserName"  required   type="text" class="form-control" id="username" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input [(ngModel)]="loginPassword" name="loginPassword" reguired type="password" class="form-control" id="pwd" placeholder="Enter password">
+                    </div>
+                    <button  type="submit" class="btn btn-default">Login</button>
+                </form>
+         <p  *ngIf = "loginFail"  > Invalid username or password.Try Again! </p>
+              <br>  
+   </div>
+   <div class="row">
+       <div class = "col-md-5">
+           
+       </div>
+       <div class ="col-md-7">
+           
+<br>
+
+<form #f="ngForm"  (ngSubmit)="SignUp()"  class="form-horizontal">
+       
+           
+           <div class="form-group row">
+                <label for="FirstName" class="col-md-2 col-form-label">First Name</label>
+                <div class="col-md-10">
+                    <input  [(ngModel)]="newAccount.FirstName" name="firstName"  required  class="form-control" type="text" placeholder="Input First Name" id="first-name-input" pattern="[a-zA-Z]{5,30}" >
+                </div>
+          </div>
+          <div class="form-group row">
+                <label for="LastName" class="col-md-2 col-form-label">Last Name</label>
+                <div class="col-md-10">
+                    <input [(ngModel)]="newAccount.LastName" name="lastaname" required class="form-control" type="text" placeholder="Input Last Name" id="last-name-input"  pattern="[a-zA-Z]{5,30}">
+                </div>
+          </div>
+          <div class="form-group row">
+                <label for="User Name" class="col-md-2 col-form-label">Username</label>
+                <div class="col-md-10">
+                    <input [(ngModel)]="newAccount.UserName" name="username" required class="form-control" type="text" placeholder="Input User Name" id="user-name-input"  pattern="[a-zA-Z0-9-_.]{5,30}">
+                </div>
+          </div>
+          <div class="form-group row">
+                <label for="Email" class="col-md-2 col-form-label">Email</label>
+                <div class="col-md-10">
+                    <input [(ngModel)]="newAccount.Email" name="email" required class="form-control" type="email" placeholder="youremail@example.com" id="email-input">
+                </div>
+          </div>
+          <div class="form-group row">
+                <label for="Password" class="col-md-2 col-form-label">Password</label>
+                <div class="col-md-10">
+                    <input [(ngModel)]="newAccount.Password" name="password" required class="form-control" type="password" placeholder="********" id="password-input">
+                </div>
+          </div>
+
+   <h3 style="text-align:center"> Select your location </h3>
+      <sebm-google-map (mapClick) = "mapClicked($event)" style="height:400px" [latitude]="lat" [longitude]="lng" [zoom]="2">
+            <sebm-google-map-marker 
+                (markerClick)="clickedMarker(m.lat,m.label)"
+                [latitude]="m.lat"
+                [longitude]="m.lng"
+                [label]="m.label"
+                [markerDraggable]="m.draggable"
+                [iconUrl]="m.icon">
+            </sebm-google-map-marker>
+     </sebm-google-map> 
+     <br>
+         <div class="form-group"> 
+            <div class="col-md-offset-4 col-md-4">
+            <button  style="width: 100%" type="submit" class="btn btn-default">Sign Up</button>
+            </div>
+         </div>
+        <p  *ngIf = "existAccount"  > There is an account with this username or email. Try again! </p>
+        
+</form>
+

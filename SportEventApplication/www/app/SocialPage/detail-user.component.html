@@ -1,0 +1,37 @@
+<h2> Detail </h2>
+<div *ngIf = "ready "  class="col-sm-6" >
+    Name : {{user.FullName}}
+    Email : {{user.Email}}
+    UserName : {{user.UserName}}
+    Address : {{user.Adress.address}}
+    <div *ngIf = "user.IsFriend">
+        Friends since : {{user.Since}}
+    </div>
+    <button *ngIf = "user.IsFriend==false" (click)="AddToFriends()"  style = "width:200px" class="btn btn-primary btn-success"> Add to friends</button>
+    <button *ngIf = "user.IsFriend" (click)="RemoveFromFriends()" style = "width:200px" class="btn btn-primary btn-danger"> Remove from friends</button>
+
+</div>
+
+<div *ngIf = "messageReady"  class="col-sm-6" >
+    Conversation : 
+    <div class="search-results"
+            infinite-scroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollUpDistance]="1.5"
+            [infiniteScrollThrottle]="50"
+            (scrolled)="onScrollDown()"
+            (scrolledUp)="onScrollUp()"
+            [scrollWindow]="false">
+    
+        <div *ngFor="let m of messages">
+            <label>
+                {{m.Text}}
+                {{m.Date}}
+                {{m.User.FullName}}
+            </label>
+        </div>
+    </div>
+    <input required name="messageText"  [(ngModel)]="messageText" placeholder="Input Your Message" /> 
+     <button (click)="SendMessage()" style = "width:100" > Send </button>   
+</div>
+ 

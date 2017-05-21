@@ -23,14 +23,14 @@ namespace SportEventApp.Business.Mapping
             MessageMapper messageMapper = new MessageMapper();
             target.Messages = new HashSet<MessageDTO>();
 
-            if(source.Messages != null)
+            /*if(source.Messages != null)
             {
                 foreach (var mes in source.Messages)
                 {
                     target.Messages.Add(messageMapper.MapToDTO(mes));
                 }
             }
-            
+            */
             return target;
 
         }
@@ -48,13 +48,13 @@ namespace SportEventApp.Business.Mapping
             MessageMapper messageMapper = new MessageMapper();
             target.Messages = new HashSet<Message>();
 
-            if(source.Messages != null)
+           /* if(source.Messages != null)
             {
                 foreach (var mes in source.Messages)
                 {
                     target.Messages.Add(messageMapper.MapFromDTO(mes));
                 }              
-            }
+            }*/
             return target;
 
         }

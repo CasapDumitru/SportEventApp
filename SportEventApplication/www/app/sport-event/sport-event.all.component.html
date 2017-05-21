@@ -1,0 +1,48 @@
+
+<br>
+<br>
+<br>
+
+       <div *ngIf = "ready"  class="search-results"
+             infinite-scroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollUpDistance]="1.5"
+            [infiniteScrollThrottle]="300"
+            (scrolled)="onScrollDown()"
+            [scrollWindow]="false">
+
+      <div  *ngFor="let sportEvent of sportEvents" class="col-sm-4" >
+            <div style="height:450px" class="panel panel-primary event-primary">
+                <div style="height:30%" class="panel-heading"><h2> {{sportEvent.Title }} </h2></div>
+                <div style="height:40%" class="panel-body nopadding">
+
+                   <img *ngIf="sportEvent.ImageBase64 != undifined" style="height:80%"  [src]="sanitizer.bypassSecurityTrustUrl(sportEvent.ImageBase64)"   width="100%" alt="event image" class="img-responsive"/>
+                      <img  *ngIf="sportEvent.ImageBase64 == undifined" style="height:80%"  src="./../../images/imageloading.gif"  width="100%" alt="event image" class="img-responsive"/>
+                
+                   <!--  <img   style="height:80%"  src="./../../images/sportevent.jpg"  width="100%" alt="event image" class="img-responsive"/> -->
+                    <div class="row nopadding">
+                        <div style="height:20%" class="col-sm-12 nopadding">
+                            <time class="start pink">
+                                <span class="month">{{sportEvent.Date.split('T')[0]}}</span>
+                                <span class="month">{{sportEvent.Date.split('T')[1]}}</span>
+                            </time>
+                        </div>
+                    </div>
+                </div>
+                <div style="height:30%" class="panel-footer panel-primary">
+                    <p class="text-center"> {{sportEvent.Description}} </p>
+                   
+                  <div class="text-center" >  <button  (click) ="goToDetail(sportEvent.Id)"  style = "width:150px" class="btn btn-primary btn-success"> Read More</button> </div>
+                </div>
+        </div>
+    </div>      
+
+</div>
+
+
+             <div *ngIf = "ready==false" style="margin: 0 auto;width: 25%;margin-top:50%;">
+                <i class="fa fa-spinner fa-spin"></i>
+                <span>Loading...</span>
+            </div>
+
+

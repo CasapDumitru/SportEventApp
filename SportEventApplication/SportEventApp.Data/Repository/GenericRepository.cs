@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq.Expressions;
 using SportEventApp.Data.Models;
+using System.Data.Entity.Migrations;
 
 namespace SportEventApp.Data.Repository
 {
@@ -55,7 +56,8 @@ namespace SportEventApp.Data.Repository
 
         public virtual void Edit(T entity)
         {
-            context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+            //context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+            context.Set<T>().AddOrUpdate(entity);
         }
 
         public virtual void Save()

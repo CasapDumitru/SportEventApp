@@ -47,5 +47,45 @@ namespace WebAPI.Controllers
                 return BadRequest("This account does not exist in DB");
             return Ok(friendshipDTO);
         }
+
+        [HttpGet]
+        [Route("GetFriendDetail/{userId}/{friendId}")]
+        public IHttpActionResult GetFriendDetail(int userId,int friendId)
+        {
+            var friendshipService = new FriendshipService();
+
+            FriendDTO frDTO = friendshipService.GetDetailFriend(userId,friendId);
+            if(frDTO == null)
+                return BadRequest("This user does not exist");
+            return Ok(frDTO);
+        }
+
+        [HttpGet]
+        [Route("RemoveFriend/{userId}/{friendId}")]
+        public IHttpActionResult RemoveFriend(int userId, int friendId)
+        {
+
+            var friendshipService = new FriendshipService();
+            var sports = friendshipService.DeleteFriend(userId, friendId);
+            if (sports == null)
+                return NotFound();
+
+            return Ok(sports);
+
+        }
+
+        [HttpGet]
+        [Route("AddFriend/{userId}/{friendId}")]
+        public IHttpActionResult AddFriend(int userId, int friendId)
+        {
+
+            var friendshipService = new FriendshipService();
+            var sports = friendshipService.AddFriend(userId, friendId);
+            if (sports == null)
+                return NotFound();
+
+            return Ok(sports);
+
+        }
     }
 }

@@ -1,0 +1,80 @@
+
+
+
+
+
+ <div  *ngIf = "ready">
+    
+     <h2> {{sportEvent.Title}} </h2>
+    <button *ngIf = "sportEvent.Going==false" (click)="Going()"  style = "width:100px" class="btn btn-primary btn-success"> Going</button>
+    <button *ngIf = "sportEvent.Going" (click)="NotGoing()" style = "width:100px" class="btn btn-primary btn-danger"> Not Going</button>
+      
+      <br>
+      <br>
+      <div class="col-md-6" *ngIf = "sportEvent.Owner.Id == accountId" > 
+
+          <img [src]="sanitizer.bypassSecurityTrustUrl(sportEvent.ImageBase64)" alt="Smiley face" height="200" width="100%" /> 
+
+            <ul>
+                <li>  Title = <input  [(ngModel)]="sportEvent.Title " placeholder="title" /></li>
+                <li>  Description =  <input  [(ngModel)]="sportEvent.Description " placeholder="description"> </li>
+                <li>  Owner = {{sportEvent.Owner.FullName}}  </li>
+                <li>  Category = {{sportEvent.Category.Name}} </li>
+                <li>  Date  =  <input [(ngModel)]="sportEvent.Date" name="date" ng2-datetime-picker close-on-select="false" />   </li>
+                <li>  Location = {{sportEvent.Adress.address}}    </li>
+            
+            </ul>
+            <button (click)="EditSpEvent()"   class="btn btn-primary btn-success col-md-offset-4 col-md-4"> Edit SportEvent</button>
+           
+           <br>
+           <br>
+            <h3> Going: </h3>
+                <ul>
+                        <li *ngFor = "let ac of sportEvent.Attendees" >
+                            {{ac.FullName}}                 
+                        </li>
+                </ul>
+       </div>  
+
+      
+       <div class="col-md-6"  *ngIf = "sportEvent.Owner.Id != accountId" > 
+           <img [src]="sanitizer.bypassSecurityTrustUrl(sportEvent.ImageBase64)" alt="Smiley face" height="200" width="100%" /> 
+            <ul>
+                <li>  Title =  {{sportEvent.Title }}  </li>
+                <li>  Description = {{sportEvent.Description}} </li>
+                <li>  Owner = {{sportEvent.Owner.FullName}}  </li>
+                <li>  Category = {{sportEvent.Category.Name}} </li>
+                <li>  Date  = {{sportEvent.Date}}   </li>
+                <li>  Location = {{sportEvent.Adress.address}}    </li>      
+            </ul>
+            <br>
+            <br>
+            <h3> Going: </h3>
+                <ul>
+                        <li *ngFor = "let ac of sportEvent.Attendees" >
+                            {{ac.FullName}}                 
+                        </li>
+                </ul>
+       </div>  
+      
+
+       <div class="col-md-6" >
+             <sebm-google-map (mapClick) = "mapClicked($event)"  style="height:400px" [latitude]="sportEvent.Adress.latitude" [longitude]="sportEvent.Adress.longitude" [zoom]="6">
+                 <sebm-google-map-marker 
+                [latitude]="sportEvent.Adress.latitude"
+                [longitude]="sportEvent.Adress.longitude"
+                [label]="L"
+                [markerDraggable]="false">
+            </sebm-google-map-marker>
+            </sebm-google-map>
+    </div>
+                              
+ </div>
+
+  <div *ngIf = "ready==false" style="margin: 0 auto;width: 25%;margin-top:50%;">
+                <i class="fa fa-spinner fa-spin"></i>
+                <span>Loading...</span>
+  </div>
+
+
+  

@@ -1,0 +1,48 @@
+<h2 style="text-align:center"> Account Settings </h2>
+
+
+<div  *ngIf = "ready==true">
+
+          <div class="col-md-6">
+            <form (ngSubmit)="EditAccount()">
+          <ul >
+            <li style="margin-top:10px"> FirstName =  <input required name="firstname"  [(ngModel)]="account.FirstName" placeholder="firstname"  pattern="[a-zA-Z]{5,30}" />  </li>
+            <li style="margin-top:10px"> LastName =  <input required  name="lastname" [(ngModel)]="account.LastName" placeholder="lastname"  pattern="[a-zA-Z]{5,30}"  />  </li>
+            <li style="margin-top:10px"> Old Password =  <input required name="oldpassword" [(ngModel)]="oldPassword" placeholder="oldPassword" />  </li>
+            <li style="margin-top:10px"> New Password =  <input   name="newPassword" [(ngModel)]="newPassword" placeholder="newPassword" />  </li>
+            <li style="margin-top:10px"> UserName =  <input required  name="username"  [(ngModel)]="account.UserName" placeholder="username" pattern="[a-zA-Z0-9-_.]{5,30}" />  </li>
+            <li style="margin-top:10px"> Email = <input type="email" required  name="email"   [(ngModel)]="account.Email" placeholder="email" />  </li>
+            <li style="margin-top:10px"> Location = {{account.Adress.address}}    </li> 
+          </ul>
+           <button  type="submit"  style = "width:100px" class="btn btn-primary btn-success col-md-offset-2 col-md-4"> Edit Account</button>
+            </form>
+            
+          
+          
+             <p style="color:red" *ngIf="passwordError"> The old password is incorrect <p>
+             <p style="color:red" *ngIf="editError"> There is already an account with this username or email<p>
+            <p style="color:green" *ngIf="success"> The account was succesfully updated<p>
+          </div>
+          <div class="col-md-6">
+            <p style="text-align:center"> My Location </p>
+            <sebm-google-map (mapClick) = "mapClicked($event)"  style="height:250px" [latitude]="account.Adress.latitude" [longitude]="account.Adress.longitude" [zoom]="6">
+                 <sebm-google-map-marker 
+                [latitude]="account.Adress.latitude"
+                [longitude]="account.Adress.longitude"
+                [label]="L"
+                [markerDraggable]="false">
+            </sebm-google-map-marker>
+            </sebm-google-map> 
+          </div>
+       
+                          
+            
+ </div>
+<br>
+<br>
+        
+        
+  <div *ngIf = "ready==false" style="margin: 0 auto;width: 25%;margin-top:50%;">
+                <i class="fa fa-spinner fa-spin"></i>
+                <span>Loading...</span>
+  </div>

@@ -83,5 +83,89 @@ namespace SportEventApp.Business.Services
                 return friendsDTO;                  
             }
         }
+
+        public FriendDTO GetDetailFriend(int userId,int friendId)
+        {
+            using (var uow = new UnitOfWork())
+            {
+                var accountRepo = uow.GetRepository<Account>();
+                var friendshipRepo = uow.GetRepository<Friendship>();
+
+                Account account = accountRepo.GetById(friendId);
+
+                Friendship existFriendship = friendshipRepo.GetAll().FirstOrDefault(f => (
+                    (f.UserOneId == userId & f.UserTwoId == friendId) |
+                    (f.UserOneId == friendId & f.UserTwoId == userId)));
+
+                FriendMapper fm = new FriendMapper();
+                FriendDTO frDTO = fm.MapToDTO(account);
+
+                if(existFriendship != null)
+                {
+                    frDTO.IsFriend = true;
+                    frDTO.Since = existFriendship.Since;
+                }
+                else
+                {
+                    frDTO.IsFriend = false;
+                }
+                return frDTO;
+
+            }
+        }
+
+        public FriendshipDTO DeleteFriend(int userId,int friendId)
+        {
+            using (var uow = new UnitOfWork())
+            {
+                var friendshipRepository = uow.GetRepository<Friendship>();
+
+
+                Friendship existFriendship = friendshipRepository.GetAll().FirstOrDefault(f => (
+                    (f.UserOneId == userId & f.UserTwoId == friendId) |
+                    (f.UserOneId == friendId & f.UserTwoId == userId)));
+
+                if (existFriendship == null)
+                    return null;
+                else
+                {
+                    FriendshipMapper fm = new FriendshipMapper();
+                    FriendshipDTO fmDTO = fm.MapToDTO(existFriendship);
+                    friendshipRepository.Delete(existFriendship.Id);
+                    uow.SaveChanges();
+                    return fmDTO;
+                }
+            }
+        }
+
+        public FriendshipDTO AddFriend(int userId,int friendId)
+        {
+            using (var uow = new UnitOfWork())
+            {
+                var friendshipRepository = uow.GetRepository<Friendship>();
+                var acountRepository = uow.GetRepository<Account>();
+
+                Friendship existFriendship = friendshipRepository.GetAll().FirstOrDefault(f => (
+                    (f.UserOneId == userId & f.UserTwoId == friendId) |
+                    (f.UserOneId == friendId & f.UserTwoId == userId)));
+
+                if (existFriendship != null)
+                    return null;
+                else
+                {
+                    Account acountOne = acountRepository.GetById(userId);
+                    Account acountTwo = acountRepository.GetById(friendId);
+                    FriendshipMapper fm = new FriendshipMapper();
+                    Friendship friendship = new Friendship();
+                    friendship.UserOne = acountOne;
+                    friendship.UserTwo = acountTwo;
+                    friendship.Since = DateTime.Now;
+
+                    Friendship add = friendshipRepository.Add(friendship);
+                    return fm.MapToDTO(add);
+                }
+
+            }
+        }
     }
 }
