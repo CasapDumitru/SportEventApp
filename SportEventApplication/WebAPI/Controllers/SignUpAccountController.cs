@@ -18,8 +18,7 @@ namespace WebAPI.Controllers
         // POST api/<controller>
         public IHttpActionResult Post(SignUpAccountDTO account)
         {
-            if(ModelState.IsValid)
-            {
+       
                 var accountService = new SignUpAccountService();
                 AccountSimpleDTO accountVM = accountService.addAccount(account);
 
@@ -27,10 +26,7 @@ namespace WebAPI.Controllers
                     return NotFound();
 
                 return Ok(accountVM);
-            } else
-            {
-                return BadRequest("The model is not valid");
-            }
+            
                 
       
         }
