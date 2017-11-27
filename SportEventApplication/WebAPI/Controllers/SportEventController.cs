@@ -3,9 +3,6 @@ using SportEventApp.Business.DTOModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -15,8 +12,7 @@ namespace WebAPI.Controllers
     [RoutePrefix("api/sportevent")]
     public class SportEventController : ApiController
     {
-        // GET api/<controller>
-        //[HttpGet]
+
         public IHttpActionResult Get()
         {
             var sportEventService = new SportEventService();
@@ -28,7 +24,6 @@ namespace WebAPI.Controllers
             return Ok(sportsEvents);
         }
 
-        // GET api/<controller>/5
         public IHttpActionResult Get(int id)
         {
             var sportEventService = new SportEventService();
@@ -53,7 +48,6 @@ namespace WebAPI.Controllers
         }
 
 
-        // POST api/<controller>
         public IHttpActionResult Post(SportEventDTO sportevent)
         {
   
@@ -68,7 +62,6 @@ namespace WebAPI.Controllers
 
         }
 
-        // DELETE api/<controller>/5
         public IHttpActionResult Delete(int id)
         {
             var sportEventService = new SportEventService();

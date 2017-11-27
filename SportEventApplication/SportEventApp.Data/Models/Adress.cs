@@ -19,8 +19,6 @@ namespace SportEventApp.Data.Models
                 return false;
             else
                 return (this.latitude.Equals(ad.latitude) && this.longitude.Equals(ad.longitude));                  
-        }
-
-        
+        }    
     }
 }

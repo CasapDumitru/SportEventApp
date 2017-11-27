@@ -1,10 +1,5 @@
 ﻿using SportEventApp.Business.DTOModels;
 using SportEventApp.Business.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -15,7 +10,6 @@ namespace WebAPI.Controllers
 
     public class MessengerController : ApiController
     {
-        // GET api/<controller>
         [HttpGet]
         [Route("GetConversations/{userId}")]
         public IHttpActionResult Get(int userId)
@@ -25,7 +19,6 @@ namespace WebAPI.Controllers
             return Ok(messengerService.getConversationByUserId(userId));
         }
 
-        // POST api/<controller>
         public IHttpActionResult Post(ConversationDTO conversationDTO)
         {
             var messengerService = new MessengerService();
@@ -37,8 +30,6 @@ namespace WebAPI.Controllers
             return Ok(convDTO);
         }
 
-
-        // DELETE api/<controller>/5
         public IHttpActionResult Delete(int id)
         {
             var messengerService = new MessengerService();
@@ -50,7 +41,6 @@ namespace WebAPI.Controllers
 
         [HttpPost]
         [Route("SendMessage")]
-        // POST api/<controller>
         public IHttpActionResult PostMessage(MessageDTO messageDTO)
         {
             var messengerService = new MessengerService();
@@ -64,7 +54,6 @@ namespace WebAPI.Controllers
 
         [HttpDelete]
         [Route("DeleteMessage/{id}")]
-        // DELETE api/<controller>/5
         public IHttpActionResult DeleteMessage(int id)
         {
             var messengerService = new MessengerService();

@@ -10,7 +10,6 @@ namespace SportEventApp.Busines.Services
 {
     public class AdressService
     {
-
         public AdressDTO getAdressById(int id)
         {
             using (var uow = new UnitOfWork())

@@ -17,5 +17,4 @@ namespace SportEventApp.Data.Repository
             void Save();
             T GetById(int id);
         }
-    
 }

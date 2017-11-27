@@ -2,11 +2,7 @@
 using SportEventApp.Busines.Services;
 using SportEventApp.Business.DTOModels;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -16,7 +12,6 @@ namespace WebAPI.Controllers
     [RoutePrefix("api/account")]
     public class AccountController : ApiController
     {
-        // GET api/<controller>
         public IHttpActionResult Get()
         {
             var accountService = new AccountService();
@@ -28,7 +23,6 @@ namespace WebAPI.Controllers
             return Ok(accounts);
         }
 
-        // GET api/<controller>/5
         public IHttpActionResult Get(int id)
         {
             var accountService = new AccountService();
@@ -41,7 +35,6 @@ namespace WebAPI.Controllers
             return Ok(accountVM);
         }
 
-        // POST api/<controller>
         public IHttpActionResult Post(AccountDTO account)
         {
             if (ModelState.IsValid)
@@ -60,7 +53,7 @@ namespace WebAPI.Controllers
             }
                
         }
-        // DELETE api/<controller>/5
+
         public IHttpActionResult Delete(int id)
         {
             var accountService = new AccountService();
@@ -93,7 +86,6 @@ namespace WebAPI.Controllers
                 return NotFound();
 
             return Ok(sports);
-
         }
 
         [HttpGet]
@@ -121,7 +113,6 @@ namespace WebAPI.Controllers
                 return NotFound();
 
             return Ok(sports);
-
         }
 
         [HttpGet]
@@ -135,21 +126,18 @@ namespace WebAPI.Controllers
                 return NotFound();
 
             return Ok(sports);
-
         }
 
         [HttpGet]
         [Route("GetCreatedSportEvents/{pageSize:int}/{pageNumber:int}/{id:int}")]
         public IHttpActionResult GetCreatedSportEvents(int pageSize,int pageNumber,int id)
         {
-
             var accountService = new AccountService();
             var sportEvents = accountService.GetCreatedSportEvents(pageSize,pageNumber,id);
             if (sportEvents == null)
                 return NotFound();
 
             return Ok(sportEvents);
-
         }
 
         [HttpGet]
@@ -176,8 +164,6 @@ namespace WebAPI.Controllers
             }
 
             return Ok(sportEvents);
-
         }
-
     }
 }

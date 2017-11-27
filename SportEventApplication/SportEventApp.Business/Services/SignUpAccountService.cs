@@ -46,7 +46,6 @@ namespace SportEventApp.Busines.Services
             }
         }
 
-
         public SignUpAccountDTO getAccountById(int id)
         {
             using (var uow = new UnitOfWork())
@@ -106,7 +105,5 @@ namespace SportEventApp.Busines.Services
                 return accountVM;
             }
         }
-
     }
-
  }

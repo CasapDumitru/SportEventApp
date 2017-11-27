@@ -1,10 +1,5 @@
 ﻿using SportEventApp.Busines.Services;
 using SportEventApp.Business.DTOModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -13,7 +8,7 @@ namespace WebAPI.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SportController : ApiController
     {
-       // GET api/<controller>/5
+
          public IHttpActionResult Get(int id)
         {
             var sportService = new SportService();
@@ -25,7 +20,6 @@ namespace WebAPI.Controllers
             return Ok(account);
         }
 
-        // POST api/<controller>
         public IHttpActionResult Post(SportDTO sportVM)
         {
        
@@ -38,7 +32,6 @@ namespace WebAPI.Controllers
 
         }
 
-        // DELETE api/<controller>/5
         public IHttpActionResult Delete(int id)
         {
             var sportService = new SportService();

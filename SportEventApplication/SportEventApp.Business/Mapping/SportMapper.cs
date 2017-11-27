@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using SportEventApp.Data.Models;
+﻿using SportEventApp.Data.Models;
 using SportEventApp.Business.DTOModels;
 
 namespace SportEventApp.Business.Mapping

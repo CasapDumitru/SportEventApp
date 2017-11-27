@@ -27,4 +27,3 @@ namespace SportEventApp.Business.DTOModels
         public AdressDTO Adress { get; set; }
     }
 }
-

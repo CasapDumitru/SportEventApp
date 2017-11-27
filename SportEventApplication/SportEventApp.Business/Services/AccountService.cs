@@ -25,8 +25,7 @@ namespace SportEventApp.Busines.Services
                 Adress adress = adressRepository.GetById(account.AdressId);
                 AccountMapper accountMapper = new AccountMapper();
                 AccountDTO accountVM = accountMapper.MapToDTO(account);
-                return accountVM;
-                 
+                return accountVM;  
             }
         }
 
@@ -36,8 +35,7 @@ namespace SportEventApp.Busines.Services
             {
                 var accountRepository = uow.GetRepository<Account>();
                 var accounts = accountRepository.GetAll().ToList();
-
-  
+ 
                 List<AccountDTO> list = new List<AccountDTO>();
                 AccountMapper accountMapper = new AccountMapper();
                 foreach (var account in accounts)
@@ -279,11 +277,5 @@ namespace SportEventApp.Busines.Services
                 return list;
             }
         }
-
-
-
-    }
-        
+    }     
  }
-
-

@@ -1,10 +1,6 @@
 ﻿using SportEventApp.Business.DTOModels;
 using SportEventApp.Data.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SportEventApp.Business.Mapping
 {
@@ -23,16 +19,7 @@ namespace SportEventApp.Business.Mapping
             MessageMapper messageMapper = new MessageMapper();
             target.Messages = new HashSet<MessageDTO>();
 
-            /*if(source.Messages != null)
-            {
-                foreach (var mes in source.Messages)
-                {
-                    target.Messages.Add(messageMapper.MapToDTO(mes));
-                }
-            }
-            */
             return target;
-
         }
 
         public Conversation MapFromDTO(ConversationDTO source)
@@ -48,15 +35,7 @@ namespace SportEventApp.Business.Mapping
             MessageMapper messageMapper = new MessageMapper();
             target.Messages = new HashSet<Message>();
 
-           /* if(source.Messages != null)
-            {
-                foreach (var mes in source.Messages)
-                {
-                    target.Messages.Add(messageMapper.MapFromDTO(mes));
-                }              
-            }*/
             return target;
-
         }
     }
 }

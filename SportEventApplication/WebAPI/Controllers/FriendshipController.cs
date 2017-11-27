@@ -1,10 +1,5 @@
 ﻿using SportEventApp.Business.DTOModels;
 using SportEventApp.Business.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -15,7 +10,6 @@ namespace WebAPI.Controllers
 
     public class FriendshipController : ApiController
     {
-        // GET api/<controller>
         [HttpGet]
         [Route("GetFriends/{userId}")]
         public IHttpActionResult Get(int userId)
@@ -25,7 +19,6 @@ namespace WebAPI.Controllers
             return Ok(friendshipService.GetAllFriendships(userId));
         }
 
-        // POST api/<controller>
         public IHttpActionResult Post(FriendshipDTO friendship)
         {
                 var friendshipService = new FriendshipService();
@@ -37,8 +30,6 @@ namespace WebAPI.Controllers
                 return Ok(friendshipDTO);
         }
 
-
-        // DELETE api/<controller>/5
         public IHttpActionResult Delete(int id)
         {
             var friendshipService = new FriendshipService();
@@ -85,7 +76,6 @@ namespace WebAPI.Controllers
                 return NotFound();
 
             return Ok(sports);
-
         }
     }
 }

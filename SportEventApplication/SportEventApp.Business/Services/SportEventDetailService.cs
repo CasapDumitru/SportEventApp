@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace SportEventApp.Busines.Services
 {
     public class SportEventDetailService
@@ -79,7 +78,5 @@ namespace SportEventApp.Busines.Services
                 return sportEventMapper.MapToDTO(sportEvent);
             }
         }
-
     }
-
 }

@@ -1,11 +1,5 @@
 ﻿using SportEventApp.Business.DTOModels;
-using SportEventApp.Business.Mapping;
 using SportEventApp.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
 
 namespace SportEventApp.Business.Mapping
 {
@@ -30,9 +24,7 @@ namespace SportEventApp.Business.Mapping
             SportMapper sportMapper = new SportMapper();
             target.Category = sportMapper.MapToDTO(source.Category);
 
-
             return target;
-
         }
 
         public SportEvent MapFromDTO(SportEventDTO source)

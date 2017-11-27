@@ -11,6 +11,5 @@ namespace SportEventApp.Data.Mappings
             HasKey(m => m.Id);
             Property(m => m.Name);
         }
-
     }
 }

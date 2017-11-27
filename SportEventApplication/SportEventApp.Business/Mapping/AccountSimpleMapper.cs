@@ -1,8 +1,6 @@
 ﻿using SportEventApp.Business.DTOModels;
 using SportEventApp.Data.Models;
 
-
-
 namespace SportEventApp.Business.Mapping
 {
     public class AccountSimpleMapper

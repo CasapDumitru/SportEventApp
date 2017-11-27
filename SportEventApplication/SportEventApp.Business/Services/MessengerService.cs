@@ -5,8 +5,6 @@ using SportEventApp.Data.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SportEventApp.Business.Services
 {
@@ -38,7 +36,6 @@ namespace SportEventApp.Business.Services
                     Conversation add = conversationRepository.Add(conversation);
                     return cm.MapToDTO(add);
                 }
-
             }
         }
 
@@ -200,7 +197,6 @@ namespace SportEventApp.Business.Services
                 Conversation add = conversationRepository.Add(createConv);
 
                 return add.Id;
-
             }
         }
     }

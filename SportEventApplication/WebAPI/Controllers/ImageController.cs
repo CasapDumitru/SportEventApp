@@ -1,15 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System;
-using System.Web.Hosting;
 using System.IO;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -19,7 +14,6 @@ namespace WebAPI.Controllers
     [RoutePrefix("api/image")]
     public class ImageController : ApiController
     {
-
         [HttpGet]
         [Route("Get/{name}/{ext}")]
         public IHttpActionResult Get(string name,string ext)
@@ -29,7 +23,6 @@ namespace WebAPI.Controllers
 
             var bytes = File.ReadAllBytes(path);
             var base64 = Convert.ToBase64String(bytes);
-
 
             return Ok("data:image/"+ext+";base64," + base64);
         }
@@ -98,7 +91,5 @@ namespace WebAPI.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotFound, dict);
             }
         }
-
     }
-
 }

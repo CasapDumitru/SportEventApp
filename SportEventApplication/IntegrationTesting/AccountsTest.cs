@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SportEventApp.Business.DTOModels;
 using SportEventApp.Busines.Services;
 
@@ -113,8 +112,6 @@ namespace IntegrationTesting
             Assert.IsNotNull(account1);
             Assert.IsNull(account3);
 
-
         }
-
     }
 }

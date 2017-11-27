@@ -23,7 +23,6 @@ namespace SportEventApp.Business.Services
 
                 }
                 return -1;
-
             }
         }
     }

@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq.Expressions;
 using SportEventApp.Data.Models;
 using System.Data.Entity.Migrations;
 
@@ -14,14 +9,13 @@ namespace SportEventApp.Data.Repository
     public  class GenericRepository< T> :
      IGenericRepository<T> where T : BaseModel
     {
-
         private DbContext context;
+
         public GenericRepository(DbContext dbcontext)
         {
             this.context = dbcontext;
         }
        
-
         public virtual IQueryable<T> GetAll()
         {
 
@@ -36,10 +30,6 @@ namespace SportEventApp.Data.Repository
             return query;
         }
 
-        /*public virtual void Add(T entity)
-        {
-            context.Set<T>().Add(entity);
-        }*/
         public T Add(T entity)
         {
             context.Set<T>().Add(entity);

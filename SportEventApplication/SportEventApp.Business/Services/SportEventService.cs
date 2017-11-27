@@ -15,16 +15,10 @@ namespace SportEventApp.Busines.Services
             using (var uow = new UnitOfWork())
             {
                 var sportEventsRepository = uow.GetRepository<SportEvent>();
-                /*var accountRepository = uow.GetRepository<Account>();
-                var adressRepository = uow.GetRepository<Adress>();
-                var sportRepository = uow.GetRepository<Sport>();*/
-
                 var sportEvents = sportEventsRepository.GetAll().ToList();
-
 
                 List<SportEventDTO> list = new List<SportEventDTO>();
                 SportEventMapper sportEventMapper = new SportEventMapper();
-
 
                 foreach (var sportEvent in sportEvents)
                 {
@@ -35,7 +29,6 @@ namespace SportEventApp.Busines.Services
                 return list;
             }
         }
-
 
         public SportEventDTO getSportEventBy(int id)
         {
@@ -50,7 +43,6 @@ namespace SportEventApp.Busines.Services
                 return sportEventVM;
             }
         }
-
 
         public IEnumerable<SportEventDTO> GetByPage(int pageSize, int pageNumber)
         {
@@ -70,7 +62,6 @@ namespace SportEventApp.Busines.Services
             return sportsev;
 
         }
-
 
         public SportEventDTO addSportEvent(SportEventDTO sporteventVM)
         {
@@ -120,6 +111,7 @@ namespace SportEventApp.Busines.Services
 
             }
         }
+
         public IEnumerable<SportEventDTO> getSportEventsInterested(List<int> sportsId)
         {
             using (var uow = new UnitOfWork())
@@ -183,7 +175,6 @@ namespace SportEventApp.Busines.Services
 
         }
 
-
         public IEnumerable<SportEventDTO> GetCreatedByPage(int pageSize, int pageNumber, int userId)
         {
             using (var uow = new UnitOfWork())
@@ -218,7 +209,6 @@ namespace SportEventApp.Busines.Services
             }
 
         }
-
 
         public SportEventDTO GoingSportEvent(int sportEvId, int userId)
         {
@@ -256,8 +246,6 @@ namespace SportEventApp.Busines.Services
             }
         }
 
-
-       
         public IEnumerable<SportEventDTO> GetNearByPage(int pageSize, int pageNumber, float lat, float lng)
         {
             using (var uow = new UnitOfWork())
@@ -311,7 +299,6 @@ namespace SportEventApp.Busines.Services
                         foreach (var aten in sportEvent.Attendees)
                         {
                             aten.ParticipatedSportEvents.Remove(sportEvent);
-                           // sportEventSerivce.NotGoingSportEvent(sportEvent.Id, aten.Id);
                         }
                         sportEvent.Attendees = null;
                     }
@@ -323,7 +310,6 @@ namespace SportEventApp.Busines.Services
                     return true;
                 }
             }
-
         }
     }
 }

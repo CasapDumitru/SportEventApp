@@ -20,7 +20,6 @@ namespace SportEventApp.Busines.Services
                 if (sport == null)
                     return null;
 
-
                 SportMapper sportMapper = new SportMapper();
 
                 SportDTO svm = sportMapper.MapToDTO(sport);
@@ -76,7 +75,6 @@ namespace SportEventApp.Busines.Services
                     return sportVM;
                 }
             }
-
         }
 
         public IEnumerable<SportDTO> getAllSports()
@@ -84,7 +82,6 @@ namespace SportEventApp.Busines.Services
             using (var uow = new UnitOfWork())
             {
                 var sportRepository = uow.GetRepository<Sport>();
-
                 var sports = sportRepository.GetAll().ToList();
 
                 List<SportDTO> list = new List<SportDTO>();
@@ -101,5 +98,4 @@ namespace SportEventApp.Busines.Services
             }
         }
     }
-
 }

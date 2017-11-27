@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SportEventApp.Busines.Services;
 using SportEventApp.Business.Services;
 using SportEventApp.Business.DTOModels;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace IntegrationTesting
 {
-    /// <summary>
-    /// Summary description for MessengerTest
-    /// </summary>
+
     [TestClass]
     public class MessengerTest
     {

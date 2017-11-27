@@ -17,7 +17,6 @@ namespace SportEventApp.Data.Models
         public virtual ICollection<Account> Attendees { get; set; }
         public string ImagePath { get; set; }
 
-
         public SportEvent()
         {
             Attendees = new HashSet<Account>();

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-
 namespace SportEventApp.Business.Mapping
 {
     public class AdressMapper

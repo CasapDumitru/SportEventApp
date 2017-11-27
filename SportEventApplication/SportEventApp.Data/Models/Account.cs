@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SportEventApp.Data.Models
 {
@@ -32,10 +31,8 @@ namespace SportEventApp.Data.Models
             Account ac = obj as Account;
             if (ac == null)
                 return false;
-
             else
-                return ( this.Email.Equals(ac.Email) || this.UserName.Equals(ac.UserName));
-                    
+                return ( this.Email.Equals(ac.Email) || this.UserName.Equals(ac.UserName));                 
         }
     }
 }

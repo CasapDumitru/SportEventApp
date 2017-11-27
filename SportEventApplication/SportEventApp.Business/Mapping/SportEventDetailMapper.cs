@@ -1,10 +1,6 @@
 ﻿using SportEventApp.Business.DTOModels;
-using SportEventApp.Business.Mapping;
 using SportEventApp.Data.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace SportEventApp.Business.Mapping
 {

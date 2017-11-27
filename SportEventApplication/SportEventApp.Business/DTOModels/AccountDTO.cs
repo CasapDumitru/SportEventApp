@@ -17,6 +17,5 @@ namespace SportEventApp.Business.DTOModels
         [Required]
         public string UserName { get; set; }
         public AdressDTO Adress { get; set; }
-
     }
 }

@@ -7,9 +7,6 @@ using SportEventApp.Busines.Services;
 
 namespace IntegrationTesting
 {
-    /// <summary>
-    /// Summary description for SportEventTest
-    /// </summary>
     [TestClass]
     public class SportEventTest
     {
@@ -62,8 +59,6 @@ namespace IntegrationTesting
             accountService.deleteAccount(owner.Id);
             sportService.deleteSport(sport.Id);
             
-
-
             Assert.IsNotNull(sportEvent);
             Assert.AreEqual(sportEvent.Title, "Campionat0001");
             Assert.AreEqual(sportEvent.Owner.UserName, "Popescu");
@@ -94,11 +89,7 @@ namespace IntegrationTesting
             account.Adress = address;
             account.Password = "123456";
 
-
-
             AccountSimpleDTO ac = signUpAccountService.addAccount(account);
-
-
 
             AccountDTO owner = accountService.getAccountById(ac.Id);
 
@@ -115,7 +106,6 @@ namespace IntegrationTesting
             sportEvent.Owner = owner;
 
             sportEvent = sportEventService.addSportEvent(sportEvent);
-
 
             SportEventDetailService seds = new SportEventDetailService();
 
@@ -135,8 +125,6 @@ namespace IntegrationTesting
 
             Assert.IsNotNull(sportEventDetail);
             Assert.AreEqual(sportEventDetail.Title, "TitluNou");
-
-
         }
 
         [TestMethod]
