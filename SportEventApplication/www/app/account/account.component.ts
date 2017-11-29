@@ -7,6 +7,7 @@ import { GoogleMapService } from "./../google-maps/google-map.service";
 @Component({
     selector: 'account',
     templateUrl: 'app/account/account.component.html',
+    styleUrls:['app/account/account.style.css'],
     providers: [AccountService,GoogleMapService],
 })
 

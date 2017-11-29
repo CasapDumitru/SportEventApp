@@ -69,6 +69,7 @@ System.register(["@angular/core", "./sport.service"], function (exports_1, conte
                 core_1.Component({
                     selector: 'sports',
                     templateUrl: 'app/sport/sport.component.html',
+                    styleUrls: ['app/sport/sport.style.css'],
                     providers: [sport_service_1.SportService]
                 }),
                 __metadata("design:paramtypes", [sport_service_1.SportService])

@@ -1,17 +1,16 @@
 <div class="col-xs-12">
-    <div class="col-xs-4 col-xs-offset-2">
-        <h2>My Sports</h2> 
+    <h2>My Sports</h2> 
+        
             
-     <div *ngFor="let sport of interests">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"
+     <div *ngFor="let sport of interests" class="col-xs-offset-2">
+            <div class="checkbox col-xs-4">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input"
                      [checked]="sport.Interest"
                      (change)="checkboxevent($event.target.checked,sport.Id)">
+                     <span class="custom-control-indicator"></span>
                      {{sport.Name}}
-                 </label>
-                                    
+                 </label>              
              </div>
-    </div>
     </div>
 </div>

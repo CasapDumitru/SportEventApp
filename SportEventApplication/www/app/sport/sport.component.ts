@@ -8,6 +8,7 @@ import {SportInterest} from './sport.interest';
 @Component({
     selector: 'sports',
     templateUrl: 'app/sport/sport.component.html',
+    styleUrls :['app/sport/sport.style.css'],
     providers: [SportService]
 })
 

@@ -1,0 +1,34 @@
+.title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.info input {
+    width: 100%;
+}
+
+.mapShow {
+    height: 275px;
+}
+
+
+h4 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+form {
+    width: 100%;
+}
+
+.row {
+    margin-bottom: 30px;
+}
+
+.edit {
+    margin-top: 25px;
+    background-color: limegreen;
+    font-size: 25px;
+    border-radius: 25px;
+    border: 2px solid green;
+}

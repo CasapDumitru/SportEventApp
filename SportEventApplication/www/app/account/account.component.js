@@ -82,6 +82,7 @@ System.register(["@angular/core", "./account.service", "./../google-maps/google-
                 core_1.Component({
                     selector: 'account',
                     templateUrl: 'app/account/account.component.html',
+                    styleUrls: ['app/account/account.style.css'],
                     providers: [account_service_1.AccountService, google_map_service_1.GoogleMapService],
                 }),
                 __metadata("design:paramtypes", [account_service_1.AccountService, google_map_service_1.GoogleMapService])

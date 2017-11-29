@@ -1,31 +1,55 @@
-<h2 style="text-align:center"> Account Settings </h2>
 
+<div *ngIf = "ready==true">
+ <h2 class="title"> Account Settings </h2>  
+<div class="info col-md-12">
 
-<div  *ngIf = "ready==true">
-
+       
+<form #f="ngForm" (ngSubmit)="EditAccount()"  class="form-horizontal">
           <div class="col-md-6">
-            <form (ngSubmit)="EditAccount()">
-          <ul >
-            <li style="margin-top:10px"> FirstName =  <input required name="firstname"  [(ngModel)]="account.FirstName" placeholder="firstname"  pattern="[a-zA-Z]{5,30}" />  </li>
-            <li style="margin-top:10px"> LastName =  <input required  name="lastname" [(ngModel)]="account.LastName" placeholder="lastname"  pattern="[a-zA-Z]{5,30}"  />  </li>
-            <li style="margin-top:10px"> Old Password =  <input required name="oldpassword" [(ngModel)]="oldPassword" placeholder="oldPassword" />  </li>
-            <li style="margin-top:10px"> New Password =  <input   name="newPassword" [(ngModel)]="newPassword" placeholder="newPassword" />  </li>
-            <li style="margin-top:10px"> UserName =  <input required  name="username"  [(ngModel)]="account.UserName" placeholder="username" pattern="[a-zA-Z0-9-_.]{5,30}" />  </li>
-            <li style="margin-top:10px"> Email = <input type="email" required  name="email"   [(ngModel)]="account.Email" placeholder="email" />  </li>
-            <li style="margin-top:10px"> Location = {{account.Adress.address}}    </li> 
-          </ul>
-           <button  type="submit"  style = "width:100px" class="btn btn-primary btn-success col-md-offset-2 col-md-4"> Edit Account</button>
-            </form>
-            
-          
-          
-             <p style="color:red" *ngIf="passwordError"> The old password is incorrect <p>
+        <div class="form-group row">
+                <label  class="col-md-3 col-form-label">First Name</label>
+                <div class="col-md-9">
+                    <input required name="firstname"  [(ngModel)]="account.FirstName" placeholder="firstname"  pattern="[a-zA-Z]{5,30}"/>
+                </div>
+          </div>
+          <div class="form-group row">
+                <label class="col-md-3 col-form-label">Last Name</label>
+                <div class="col-md-9">
+                    <input required  name="lastname" [(ngModel)]="account.LastName" placeholder="lastname"  pattern="[a-zA-Z]{5,30}"  />
+                </div>
+          </div>
+          <div class="form-group row">
+                <label class="col-md-3 col-form-label">Username</label>
+                <div class="col-md-9">
+                    <input required  name="username"  [(ngModel)]="account.UserName" placeholder="username" pattern="[a-zA-Z0-9-_.]{5,30}" />
+                </div>
+          </div>
+          <div class="form-group row">
+                <label class="col-md-3 col-form-label">Email</label>
+                <div class="col-md-9">
+                   <input type="email" required  name="email"   [(ngModel)]="account.Email" placeholder="email" />
+                </div>
+          </div>
+          <div class="form-group row">
+                <label class="col-md-3 col-form-label">Old Password</label>
+                <div class="col-md-9">
+                    <input required name="oldpassword" [(ngModel)]="oldPassword" placeholder="oldPassword" />
+                </div>
+          </div>
+          <div class="form-group row">
+                <label  class="col-md-3 col-form-label">New Password</label>
+                <div class="col-md-9">
+                    <input   name="newPassword" [(ngModel)]="newPassword" placeholder="newPassword" />
+                </div>
+          </div>
+           <p style="color:red" *ngIf="passwordError"> The old password is incorrect <p>
              <p style="color:red" *ngIf="editError"> There is already an account with this username or email<p>
             <p style="color:green" *ngIf="success"> The account was succesfully updated<p>
-          </div>
-          <div class="col-md-6">
-            <p style="text-align:center"> My Location </p>
-            <sebm-google-map (mapClick) = "mapClicked($event)"  style="height:250px" [latitude]="account.Adress.latitude" [longitude]="account.Adress.longitude" [zoom]="6">
+               
+      </div>
+      <div class="col-md-6">
+            <h4 style="text-align:center"> My Location = {{account.Adress.address}}    </h4> 
+            <sebm-google-map (mapClick) = "mapClicked($event)"  class="mapShow" [latitude]="account.Adress.latitude" [longitude]="account.Adress.longitude" [zoom]="6">
                  <sebm-google-map-marker 
                 [latitude]="account.Adress.latitude"
                 [longitude]="account.Adress.longitude"
@@ -33,15 +57,16 @@
                 [markerDraggable]="false">
             </sebm-google-map-marker>
             </sebm-google-map> 
-          </div>
-       
-                          
+      </div>
+          <button type="submit" class="edit btn btn-default col-md-offset-4 col-md-4 col-md-offset-4">Edit Account</button>
+</form>     
             
- </div>
-<br>
-<br>
-        
-        
+</div> 
+</div>                     
+            
+ 
+
+
   <div *ngIf = "ready==false" style="margin: 0 auto;width: 25%;margin-top:50%;">
                 <i class="fa fa-spinner fa-spin"></i>
                 <span>Loading...</span>
