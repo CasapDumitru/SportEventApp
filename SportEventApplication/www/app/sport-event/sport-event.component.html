@@ -1,22 +1,21 @@
 <h2 style="text-align:center"> Sport Events </h2>
 
-
-<ul  class="nav navbar-nav col-md-12">
+<ul  class="nav navbar-nav sport-event-navbar col-md-12">
             <li>
-                <a routerLink="./createsportevent" routerLinkActive="active">Create</a>
+                <a routerLink="./allsportevents" routerLinkActive="active">All Sport Events</a>
             </li>
             <li>
-                <a routerLink="./createdsportevents" routerLinkActive="active"> My created </a>
+                  <a routerLink="./nearsportevents" routerLinkActive="active">Near Sport Events</a> 
+            </li>
+            <li>
+                <a routerLink="./createdsportevents" routerLinkActive="active"> My created Sport Events </a>
             </li>
              <li>
-                <a routerLink="./goingsportevents" routerLinkActive="active">Goings</a>
+                <a routerLink="./goingsportevents" routerLinkActive="active">Goings Sport Events</a>
             </li>
             <li>
-                <a routerLink="./allsportevents" routerLinkActive="active">All</a>
-            </li>
-            <li>
-                  <a routerLink="./nearsportevents" routerLinkActive="active">Near</a> 
-            </li>
+                <a routerLink="./createsportevent" routerLinkActive="active">Create A New Sport Event</a>
+            </li>        
 </ul>
 
 <router-outlet> </router-outlet>

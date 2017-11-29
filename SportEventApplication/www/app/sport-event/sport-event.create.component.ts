@@ -18,6 +18,7 @@ interface marker {
 
 @Component({
   templateUrl: "app/sport-event/sport-event.create.component.html",
+  styleUrls :['app/sport-event/sport-event.style.css'],
   providers : [GoogleMapService,SportService,AccountService,SportEventService]
 })
 

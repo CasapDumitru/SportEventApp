@@ -107,3 +107,58 @@ img.resize{
    max-width:50%;
    max-height:50%;
 }
+
+.sport-event-navbar li {
+    margin-right: 40px;
+}
+
+.search-results {
+    margin-top: 100px;
+}
+
+.new-sport-event {
+    margin-top: 100px;
+}
+
+.date-input {
+    width: 100%;
+}
+
+.sport-event-location {
+    margin-bottom: 40px;
+}
+
+.create {
+    background-color: limegreen;
+    font-size: 25px;
+    border-radius: 25px;
+    border: 2px solid green;
+}
+
+.sport-event-detail-title {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.going-button {
+    margin-top: 20px;
+}
+
+.location-details {
+    text-align: center;
+}
+
+.location-details h4 {
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.sport-event-detail {
+    margin-bottom: 40px;
+}
+
+.people-go {
+    margin-top: 30px;
+}
+
+

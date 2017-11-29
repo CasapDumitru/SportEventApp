@@ -1,13 +1,7 @@
-<img [src]="src" [hidden]="!src"><br>
-      <input type="file" image-upload
-        (imageSelected)="selected($event)"
-        [resizeOptions]="resizeOptions">
-
-
-
-<form #f="ngForm"  (ngSubmit)="CreateEvent()"  class="form-horizontal">
+<form #f="ngForm"  (ngSubmit)="CreateEvent()"  class="form-horizontal new-sport-event">
        
-           
+           <div class="col-md-6">
+
            <div class="form-group row">
                 <label for="Title" class="col-md-2 col-form-label">Title</label>
                 <div class="col-md-10">
@@ -21,12 +15,6 @@
                 </div>
           </div>
           <div class="form-group row">
-                <label for="Date" class="col-md-2 col-form-label">Date</label>
-                <div class="col-md-10">
-                   <input [(ngModel)]="sportEvent.Date" name="date" required ng2-datetime-picker close-on-select="false" />
-                </div>
-          </div>
-          <div class="form-group row">
                 <label for="Category" class="col-md-2 col-form-label">Category</label>
                 <div class="col-md-10">
                    <select class="form-control" [(ngModel)]="sportEvent.Category"  name="category" >
@@ -34,8 +22,23 @@
                     </select>
                 </div>
           </div>
+          <div class="form-group row">
+                <label for="Date" class="col-md-2 col-form-label">Date</label>
+                <div class="col-md-10">
+                   <input class="date-input" [(ngModel)]="sportEvent.Date" name="date" required ng2-datetime-picker close-on-select="false" />
+                </div>
+          </div>
+           </div>
+           <div class="col-md-6">
+               <p style="text-align: center; font-size: 20px;"> Add photo </p>
+               <img [src]="src" [hidden]="!src"><br>
+                <input type="file" image-upload
+                    (imageSelected)="selected($event)"
+                    [resizeOptions]="resizeOptions">
+           </div>
 
 
+    <div class="sport-event-location col-md-12">
           <h3 style="text-align:center"> Select your location </h3>
       <sebm-google-map (mapClick) = "mapClicked($event)" style="height:400px" [latitude]="lat" [longitude]="lng" [zoom]="2">
             <sebm-google-map-marker 
@@ -46,10 +49,11 @@
                 [iconUrl]="m.icon">
             </sebm-google-map-marker>
      </sebm-google-map>
-<br>
+    </div>
+
           <div class="form-group"> 
             <div class="col-md-offset-4 col-md-4">
-            <button  style="width: 100%" type="submit" class="btn btn-default">Create Sport Event</button>
+                <button  style="width: 100%" type="submit" class="btn btn-default create">Create Sport Event</button>
             </div>
          </div>
 </form>

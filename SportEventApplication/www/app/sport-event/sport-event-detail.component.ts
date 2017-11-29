@@ -10,6 +10,7 @@ import { AccountService } from './../account/account.service';
 @Component ({
     selector : 'sportevent',
     templateUrl : 'app/sport-event/sport-event-detail.component.html',
+    styleUrls :['app/sport-event/sport-event.style.css'],
     providers: [SportEventService,GoogleMapService,AccountService]
 })
 

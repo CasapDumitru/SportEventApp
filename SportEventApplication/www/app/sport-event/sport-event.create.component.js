@@ -132,6 +132,7 @@ System.register(["@angular/core", "./../sport/sport.service", "./../google-maps/
             CreateSportEventComponent = __decorate([
                 core_1.Component({
                     templateUrl: "app/sport-event/sport-event.create.component.html",
+                    styleUrls: ['app/sport-event/sport-event.style.css'],
                     providers: [google_map_service_1.GoogleMapService, sport_service_1.SportService, account_service_1.AccountService, sport_event_service_1.SportEventService]
                 }),
                 __metadata("design:paramtypes", [sport_service_1.SportService, google_map_service_1.GoogleMapService,

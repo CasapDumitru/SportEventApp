@@ -21,6 +21,7 @@ System.register(["@angular/core"], function (exports_1, context_1) {
                 core_1.Component({
                     selector: 'sportevent',
                     templateUrl: 'app/sport-event/sport-event.component.html',
+                    styleUrls: ['app/sport-event/sport-event.style.css'],
                     providers: []
                 })
             ], SportEventComponent);

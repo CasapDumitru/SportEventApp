@@ -33,13 +33,13 @@
           <div class="form-group row">
                 <label class="col-md-3 col-form-label">Old Password</label>
                 <div class="col-md-9">
-                    <input required name="oldpassword" [(ngModel)]="oldPassword" placeholder="oldPassword" />
+                    <input required name="oldpassword" type="password" [(ngModel)]="oldPassword" placeholder="oldPassword" />
                 </div>
           </div>
           <div class="form-group row">
                 <label  class="col-md-3 col-form-label">New Password</label>
                 <div class="col-md-9">
-                    <input   name="newPassword" [(ngModel)]="newPassword" placeholder="newPassword" />
+                    <input   name="newPassword" type="password" [(ngModel)]="newPassword" placeholder="newPassword" />
                 </div>
           </div>
            <p style="color:red" *ngIf="passwordError"> The old password is incorrect <p>

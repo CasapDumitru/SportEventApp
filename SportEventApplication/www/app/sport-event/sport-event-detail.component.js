@@ -114,6 +114,7 @@ System.register(["@angular/core", "./sport-event.service", "@angular/router", ".
                 core_1.Component({
                     selector: 'sportevent',
                     templateUrl: 'app/sport-event/sport-event-detail.component.html',
+                    styleUrls: ['app/sport-event/sport-event.style.css'],
                     providers: [sport_event_service_1.SportEventService, google_map_service_1.GoogleMapService, account_service_1.AccountService]
                 }),
                 __metadata("design:paramtypes", [sport_event_service_1.SportEventService, router_1.ActivatedRoute,
