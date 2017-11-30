@@ -6,6 +6,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 @Component({
     selector: 'friends',
     templateUrl: 'app/socialpage/friends.component.html',
+    styleUrls: ['app/SocialPage/social.style.css'],
     providers: [SocialService],
 })
 
@@ -35,6 +36,11 @@ export class FriendsComponent {
             id = user.UserTwo.Id;
             
         this.router.navigate(['../detailFriend',id], { relativeTo: this.r } );
+    }
+
+    getDate(time: Date) {
+        var arr = time.toString().split("T");
+        return arr[0];
     }
 
     ngOnInit() {

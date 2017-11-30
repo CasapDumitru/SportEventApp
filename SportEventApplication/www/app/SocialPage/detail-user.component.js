@@ -102,6 +102,14 @@ System.register(["@angular/core", "@angular/router", "./social.service"], functi
                         console.log(er);
                     });
                 }
+                getDate(time) {
+                    var arr = time.toString().split("T");
+                    return arr[0];
+                }
+                getHour(time) {
+                    var arr = time.toString().split("T");
+                    return arr[1].split('.')[0];
+                }
                 ngOnInit() {
                     this.route.params.subscribe(params => {
                         this.getFriendDetail(this.accountId, +params['id']);
@@ -118,6 +126,7 @@ System.register(["@angular/core", "@angular/router", "./social.service"], functi
                     ],
                     selector: 'detail-user',
                     templateUrl: 'app/socialPage/detail-user.component.html',
+                    styleUrls: ['app/socialPage/social.style.css'],
                     providers: [social_service_1.SocialService]
                 }),
                 __metadata("design:paramtypes", [social_service_1.SocialService, router_1.ActivatedRoute,

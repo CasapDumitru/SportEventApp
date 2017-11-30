@@ -46,6 +46,7 @@ System.register(["@angular/core", "@angular/http", "@angular/router"], function 
                 core_1.Component({
                     selector: 'home',
                     templateUrl: "app/home/home.component.html",
+                    styleUrls: ['app/home/home.style.css'],
                 }),
                 __metadata("design:paramtypes", [router_1.Router, http_1.Http])
             ], HomeComponent);

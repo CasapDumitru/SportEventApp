@@ -13,6 +13,7 @@ import { Message} from './../interfaces/message';
     ],
     selector : 'detail-user',
     templateUrl : 'app/socialPage/detail-user.component.html',
+    styleUrls: ['app/socialPage/social.style.css'],
     providers: [SocialService]
 })
 
@@ -116,6 +117,15 @@ export class DetailUserComponent {
 
    }
    
+   getDate(time: Date) {
+        var arr = time.toString().split("T");
+        return arr[0];
+    }
+
+    getHour(time: Date) {
+        var arr = time.toString().split("T");
+        return arr[1].split('.')[0];
+    }
 
     ngOnInit(): void {
 

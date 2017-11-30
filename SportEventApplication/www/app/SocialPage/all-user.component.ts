@@ -6,6 +6,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 @Component({
     selector: 'allusers',
     templateUrl: 'app/socialpage/all-user.component.html',
+    styleUrls :['app/SocialPage/social.style.css'],
     providers: [SocialService],
 })
 

@@ -1,19 +1,43 @@
-<h2> Detail </h2>
-<div *ngIf = "ready "  class="col-sm-6" >
-    Name : {{user.FullName}}
-    Email : {{user.Email}}
-    UserName : {{user.UserName}}
-    Address : {{user.Adress.address}}
-    <div *ngIf = "user.IsFriend">
-        Friends since : {{user.Since}}
+<div *ngIf="ready && messageReady" class="col-md-12">
+
+<h2 class="title"> {{user.FullName}} </h2>
+<div  class="col-md-6" >
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">Name:</label>
+        <div class="col-md-9">
+            <p> {{user.FullName}} </p>
+        </div>
     </div>
-    <button *ngIf = "user.IsFriend==false" (click)="AddToFriends()"  style = "width:200px" class="btn btn-primary btn-success"> Add to friends</button>
-    <button *ngIf = "user.IsFriend" (click)="RemoveFromFriends()" style = "width:200px" class="btn btn-primary btn-danger"> Remove from friends</button>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">UserName:</label>
+        <div class="col-md-9">
+            <p> {{user.UserName}} </p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">Email:</label>
+        <div class="col-md-9">
+            <p> {{user.Email}} </p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">Address:</label>
+        <div class="col-md-9">
+            <p> {{user.Adress.address}} </p>
+        </div>
+    </div>
+    <div *ngIf = "user.IsFriend" class="form-group row">
+        <label class="col-md-3 col-form-label">Friends since:</label>
+        <div class="col-md-9">
+            <p> {{getDate(user.Since)}}, {{getHour(user.Since)}} </p>
+        </div>
+    </div>
+    <button *ngIf = "user.IsFriend==false" (click)="AddToFriends()"  style = "width:200px" class="btn btn-primary btn-success col-md-offset-4 col-md-4"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Add to friends</button>
+    <button *ngIf = "user.IsFriend" (click)="RemoveFromFriends()" style = "width:200px" class="btn btn-primary btn-danger col-md-offset-4 col-md-4"> <i class="fa fa-minus-circle" aria-hidden="true"></i> Remove from friends</button>
 
 </div>
 
-<div *ngIf = "messageReady"  class="col-sm-6" >
-    Conversation : 
+<div class="col-md-6 conversation" >
     <div class="search-results"
             infinite-scroll
             [infiniteScrollDistance]="2"
@@ -24,14 +48,21 @@
             [scrollWindow]="false">
     
         <div *ngFor="let m of messages">
-            <label>
+            <label class="user-message" *ngIf="m.User.Id == user.Id">
+                {{m.User.FullName}} :
                 {{m.Text}}
-                {{m.Date}}
-                {{m.User.FullName}}
+                <span class="message-date">Date: {{getDate(m.Date)}} Hour: {{getHour(m.Date)}}</span>     
+            </label>
+            <label class="my-message" *ngIf="m.User.Id != user.Id">
+                Me :
+                {{m.Text}}
+                <span class="message-date">Date: {{getDate(m.Date)}} Hour: {{getHour(m.Date)}}</span> 
             </label>
         </div>
     </div>
-    <input required name="messageText"  [(ngModel)]="messageText" placeholder="Input Your Message" /> 
-     <button (click)="SendMessage()" style = "width:100" > Send </button>   
+    <input required name="messageText"  [(ngModel)]="messageText" placeholder="Input Your Message" class="input" /> 
+     <button (click)="SendMessage()" style = "width:100" class="send" > Send </button>   
 </div>
+
+<div>
  

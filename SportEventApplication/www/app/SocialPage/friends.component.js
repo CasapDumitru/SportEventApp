@@ -50,6 +50,10 @@ System.register(["@angular/core", "./social.service", "@angular/router"], functi
                         id = user.UserTwo.Id;
                     this.router.navigate(['../detailFriend', id], { relativeTo: this.r });
                 }
+                getDate(time) {
+                    var arr = time.toString().split("T");
+                    return arr[0];
+                }
                 ngOnInit() {
                     this.getFriends();
                 }
@@ -58,6 +62,7 @@ System.register(["@angular/core", "./social.service", "@angular/router"], functi
                 core_1.Component({
                     selector: 'friends',
                     templateUrl: 'app/socialpage/friends.component.html',
+                    styleUrls: ['app/SocialPage/social.style.css'],
                     providers: [social_service_1.SocialService],
                 }),
                 __metadata("design:paramtypes", [social_service_1.SocialService, router_1.Router, router_1.ActivatedRoute])

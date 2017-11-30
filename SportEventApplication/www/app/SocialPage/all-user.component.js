@@ -53,6 +53,7 @@ System.register(["@angular/core", "./social.service", "@angular/router"], functi
                 core_1.Component({
                     selector: 'allusers',
                     templateUrl: 'app/socialpage/all-user.component.html',
+                    styleUrls: ['app/SocialPage/social.style.css'],
                     providers: [social_service_1.SocialService],
                 }),
                 __metadata("design:paramtypes", [social_service_1.SocialService, router_1.Router, router_1.ActivatedRoute])

@@ -113,3 +113,22 @@ time.pink {
     p {
         color : red;
     }
+
+    .main {
+        background-color: rgb(195,195,195);
+    }
+
+    .balls {
+        margin-top: 20px;
+        border-radius: 30%;
+        border: 2px solid darkslategray;
+        width: 80%;
+        margin-left: 10%;
+        height: 500px;
+    }
+
+    .sports{
+        margin-top: 0px;
+        height: 50px;
+        width: 100%;
+    }

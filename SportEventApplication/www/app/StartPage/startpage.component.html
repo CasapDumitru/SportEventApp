@@ -1,12 +1,9 @@
 
-    <!--<div style = "height:100px"  class="row login">
-       <div class="col-md-6">
-                 <img style = "height:100px" src="./../../images/logo.png"  width="100%" alt="event image"/>     
-        </div> 
-        </div>-->
+<div class="main">
         <br>
         <div  class="col-md-12  vertical-center">
-                <form #f="ngForm" (ngSubmit)="SignIn()" class="form-inline">
+
+                <form #f="ngForm" (ngSubmit)="SignIn()" class="form-inline col-md-8">
                     <div class="form-group">
                     <label for="username">UserName:</label>
                     <input [(ngModel)]="loginUserName" name="loginUserName"  required   type="text" class="form-control" id="username" placeholder="Enter username">
@@ -17,12 +14,16 @@
                     </div>
                     <button  type="submit" class="btn btn-default">Login</button>
                 </form>
+                <div class="col-md-4">
+                    <img class="sports" src="images/sport1.jpg">
+                </div>
          <p  *ngIf = "loginFail"  > Invalid username or password.Try Again! </p>
               <br>  
    </div>
    <div class="row">
        <div class = "col-md-5">
-           
+           <h2> Fun and Health </h2>
+           <img class="balls" src="images/sportsBall.jpg">
        </div>
        <div class ="col-md-7">
            
@@ -83,3 +84,4 @@
         
 </form>
 
+<div>
