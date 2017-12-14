@@ -1,4 +1,4 @@
-System.register(["@angular/core", "./../sport-event/sport-event.service"], function (exports_1, context_1) {
+System.register(["@angular/core", "./../sport-event/sport-event.service", "@angular/platform-browser"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["@angular/core", "./../sport-event/sport-event.service"], funct
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, sport_event_service_1, AdminSportEventComponent;
+    var core_1, sport_event_service_1, platform_browser_1, AdminSportEventComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -18,12 +18,16 @@ System.register(["@angular/core", "./../sport-event/sport-event.service"], funct
             },
             function (sport_event_service_1_1) {
                 sport_event_service_1 = sport_event_service_1_1;
+            },
+            function (platform_browser_1_1) {
+                platform_browser_1 = platform_browser_1_1;
             }
         ],
         execute: function () {
             AdminSportEventComponent = class AdminSportEventComponent {
-                constructor(sportEventService) {
+                constructor(sportEventService, sanitizer) {
                     this.sportEventService = sportEventService;
+                    this.sanitizer = sanitizer;
                     this.sportEvents = [];
                     this.ready = false;
                 }
@@ -52,9 +56,10 @@ System.register(["@angular/core", "./../sport-event/sport-event.service"], funct
                 core_1.Component({
                     selector: 'admin-sportevents',
                     templateUrl: 'app/adminSportEvents/admin-sportevents.component.html',
+                    styleUrls: ['app/adminSportEvents/admin-sportevents.style.css'],
                     providers: [sport_event_service_1.SportEventService]
                 }),
-                __metadata("design:paramtypes", [sport_event_service_1.SportEventService])
+                __metadata("design:paramtypes", [sport_event_service_1.SportEventService, platform_browser_1.DomSanitizer])
             ], AdminSportEventComponent);
             exports_1("AdminSportEventComponent", AdminSportEventComponent);
         }

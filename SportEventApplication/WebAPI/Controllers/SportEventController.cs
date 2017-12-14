@@ -18,6 +18,21 @@ namespace WebAPI.Controllers
             var sportEventService = new SportEventService();
 
             var sportsEvents = sportEventService.getAllEvents();
+
+
+            var root = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
+
+            foreach (SportEventDTO spEv in sportsEvents)
+            {
+                var path = Path.Combine(root, "Images/" + spEv.ImagePath);
+
+                var bytes = File.ReadAllBytes(path);
+
+                var base64 = Convert.ToBase64String(bytes);
+                spEv.ImageBase64 = "data:image/" + spEv.ImagePath.Split('.')[1] + ";base64," + base64;
+            }
+
+      
             if (sportsEvents == null)
                 return NotFound();
 

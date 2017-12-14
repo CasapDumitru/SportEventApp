@@ -25,11 +25,13 @@ System.register(["@angular/core", "./../sport/sport.service"], function (exports
                 constructor(sportService) {
                     this.sportService = sportService;
                     this.name = "The name of sports is";
+                    this.ready = false;
                 }
                 getSports() {
                     this.sportService.getSports().then(newSports => {
                         console.log(newSports);
                         this.sports = newSports;
+                        this.ready = true;
                     }).catch(error => {
                         console.log("An error");
                     });
@@ -37,8 +39,8 @@ System.register(["@angular/core", "./../sport/sport.service"], function (exports
                 AddSport() {
                     console.log("post");
                     this.sportService.postSport(this.newSport).then(sport => {
-                        console.log(sport),
-                            this.sports.push(sport);
+                        this.sports.push(sport);
+                        this.newSport.name = "";
                     }).catch(error => console.log("error"));
                 }
                 DeleteSport(id, index) {
@@ -62,6 +64,7 @@ System.register(["@angular/core", "./../sport/sport.service"], function (exports
                 core_1.Component({
                     selector: 'admin-sports',
                     templateUrl: 'app/adminSports/admin-sport.component.html',
+                    styleUrls: ['app/adminSports/admin-sport.style.css'],
                     providers: [sport_service_1.SportService]
                 }),
                 __metadata("design:paramtypes", [sport_service_1.SportService])

@@ -1,18 +1,33 @@
-<h2> Admin Sport Events </h2>
+
 
 <div *ngIf = "ready">
-    <div  *ngFor="let sportEvent of sportEvents;let i = index">
-   <label>
-    Title : {{sportEvent.Title }} <br>
-    Date: {{sportEvent.Date.split('T')[0]}} <br>
-    Time: {{sportEvent.Date.split('T')[1]}} <br>
-    Description: {{sportEvent.Description}} <br>
-    Sport Type : {{sportEvent.Category.Name}} <br>
-    Address : {{sportEvent.Adress.address}} <br>
-    Owner : {{sportEvent.Owner.FullName}} <br>
-    <button (click)="DeleteSportEvent(sportEvent.Id,i)" > Delete</button>
-   </label>
-    <br>
-    <br>       
-    </div>
+    <h2 class="title"> Sport Events Management </h2>
+
+    <div  *ngFor="let sportEvent of sportEvents; let i = index" class="col-sm-4" >
+            <div style="height:750px" class="panel panel-primary event-primary">
+                <div style="height:20%" class="panel-heading"><h2> {{sportEvent.Title }}</h2> <h4 class="text-center"> Sport Type: {{sportEvent.Category.Name}}</h4> </div>
+                <div style="height:50%" class="panel-body nopadding">
+
+                   <img *ngIf="sportEvent.ImageBase64 != undifined" style="height:80%"  [src]="sanitizer.bypassSecurityTrustUrl(sportEvent.ImageBase64)"   width="100%" alt="event image" class="img-responsive"/>
+                   <img  *ngIf="sportEvent.ImageBase64 == undifined" style="height:80%"  src="./../../images/imageloading.gif"  width="100%" alt="event image" class="img-responsive"/>
+                
+                    <div class="row nopadding">
+                        <div style="height:20%" class="col-sm-12 nopadding">
+                            <time class="start pink">
+                                <span class="month">{{sportEvent.Date.split('T')[0]}}</span>
+                                <span class="month">{{sportEvent.Date.split('T')[1]}}</span>
+                            </time>
+                        </div>
+                    </div>
+                </div>
+                <div style="height:30%" class="panel-footer panel-primary">
+                    <h4 class="text-center">Adress: {{sportEvent.Adress.address}} </h4>
+                    <h4 class="text-center">Description: {{sportEvent.Description}} </h4>
+                    <h4 class="text-center">Owner: {{sportEvent.Owner.FullName}} </h4>
+                   
+                  <div class="text-center" >  <button  (click) ="DeleteSportEvent(sportEvent.Id,i)"  style = "width:150px" class="button-delete"> Delete </button> </div>
+                </div>
+        </div>
+    </div> 
+
 </div>      

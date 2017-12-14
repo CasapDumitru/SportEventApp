@@ -78,7 +78,8 @@
             </div>
 
            <img [src]="sanitizer.bypassSecurityTrustUrl(sportEvent.ImageBase64)" alt="Smiley face" height="200" width="100%" /> 
-           
+           <button *ngIf = "sportEvent.Going==false" (click)="Going()"  style = "width:100px" class="btn btn-primary btn-success going-button col-md-offset-4 col-md-4"> Going</button>
+                <button *ngIf = "sportEvent.Going" (click)="NotGoing()" style = "width:100px" class="btn btn-primary btn-danger going-button col-md-offset-4 col-md-4"> Not Going</button>
        </div>  
       
 

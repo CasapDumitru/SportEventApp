@@ -1,0 +1,33 @@
+.title {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.add-sport {
+    margin-left: 50px;
+    text-align: center;
+}
+
+.add-sport label {
+    margin-bottom: 20px;
+    font-size: 35px;
+}
+
+.add-sport input {
+    display: block;
+    width: 100%;
+}
+
+.add-button {
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+    background-color: lawngreen;
+    border-radius: 5%;
+    border: 2px solid green;
+    font-size: 20px;
+}
+
+.add-button:hover {
+    background-color: limegreen;
+}
